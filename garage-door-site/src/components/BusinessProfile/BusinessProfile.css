@@ -1,0 +1,79 @@
+/*
+
+.business-profile-container {
+  margin-top: 5px;
+  background-color: #c0f8fa9d;
+  padding: 20px;
+  margin-left: 5px;
+  border-radius: 8px;
+  max-width: 500px;
+  height: 350px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  box-shadow: rgb(0, 0, 0) 3px 3px 5px 2px;
+}
+
+.business-profile-heading {
+  color: #4285f4;
+}
+
+.business-info {
+  margin-top: 20px;
+}
+
+.business-name {
+  margin-top: -15px;
+}
+
+.business-name a {
+  text-decoration: none;
+  color: #333;
+}
+
+.business-name a:hover {
+  text-decoration: underline;
+}
+
+.business-phone {
+  color: blue;
+  text-decoration: none;
+}
+
+.business-phone:hover {
+  text-decoration: underline;
+  color: green;
+  font-weight: bold;
+}
+
+.rating {
+  color: #000000;
+  margin-top: 10px;
+}
+
+.star-filled {
+  color: #fbe205;
+}
+
+.star-empty {
+  color: #ccc;
+}
+
+.business-photo {
+  max-width: 100%;
+  margin-top: -10px;
+  border: 1px solid #ccc;
+} */
+
+.custom-business-profile {
+  box-shadow: rgb(5, 5, 5) 3px 3px 5px 2px;
+}
+
+.custom-business-img:hover {
+  box-shadow: green 0px 0px 4px 3px;
+}
+
+.custom-google-business-link:hover {
+  background-color: rgb(0, 0, 0);
+  border-radius: 50px;
+  box-shadow: rgb(1, 217, 255) 0px 0px 5px 2px;
+}

@@ -1,0 +1,9 @@
+.custom-gallery-image-preview:hover {
+  cursor: pointer;
+  box-shadow: rgb(0, 47, 255) 0px 0px 4px 3px;
+}
+
+.custom-gallery-image-preview {
+  box-shadow: black 2px 2px 3px 2px;
+  border-radius: 5px;
+}

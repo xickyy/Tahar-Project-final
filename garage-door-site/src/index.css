@@ -1,0 +1,23 @@
+/* body {
+  margin: 10px;
+  font-family: 'Dancing Script', cursive;
+  font-family: 'EB Garamond', serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: rgb(52,49,255);
+  background: linear-gradient(90deg, rgba(52,49,255,1) 0%, rgba(75,75,181,1) 31%, rgba(232,234,251,1) 100%);
+}
+
+code {
+  font-family: 'Dancing Script', cursive;
+  font-family: 'EB Garamond', serif;
+} */
+
+body {
+  font-family: 'EB Garamond', serif;
+  background-color: rgb(133, 200, 255)
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

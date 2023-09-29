@@ -1,0 +1,5 @@
+.open-large-image-img {
+  border: rgb(168, 168, 255) solid 2px;
+  box-shadow: black 2px 2px 4px 2px;
+  max-height: 99vh;
+}

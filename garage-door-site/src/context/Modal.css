@@ -1,0 +1,51 @@
+#modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#modal-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+#modal-content {
+  position: absolute;
+  background-color:rgba(255, 255, 255, 0);
+}
+
+
+i#clearBtn.fa-xmark {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  margin-top: 10px;
+  margin-right: 10px;
+  z-index: 1001;
+  /* text-align: center; */
+}
+
+.fa-xmark:hover {
+  box-shadow: red 0px 0px 4px 2px;
+  border-radius: 50%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.modal-close-icon {
+  display: flex;
+  justify-content: flex-end;
+}

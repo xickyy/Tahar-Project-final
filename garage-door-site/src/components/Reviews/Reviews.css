@@ -1,0 +1,127 @@
+/* .reviews-container {
+  border: black solid 2px;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  box-shadow: rgb(0, 0, 0) 0px 0px 6px 1px;
+  background-color: #c0f8fa91;
+}
+
+.reviews-author-image {
+  height: 50px;
+  width: 50px;
+  margin-right: 10px;
+  margin-top: 25px;
+}
+
+.name-star-container {
+  display: flex;
+  align-items: center;
+  margin-top: -18px;
+  margin-left: 10px;
+}
+
+.review-author {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.review-stars {
+  margin-left: 100px;
+}
+
+.reviews-intro {
+  display: flex;
+  font-size: 20px;
+  justify-content: center;
+  margin-top: -20px;
+}
+
+.reviews-date {
+  margin-top: -25px;
+  margin-left: 70px;
+}
+
+
+
+.reviews-text {
+  margin-left: 10px;
+  font-size: 18px;
+}
+
+.reviews-click-here {
+  text-decoration: none;
+  color: black;
+}
+
+.reviews-click-here:hover {
+color: green;
+text-decoration: underline;
+}
+
+.reviews-load-more-reviews {
+  height: 40px;
+  background-color: rgb(215, 215, 250);
+  border-radius: 10px;
+  font-size: 17px;
+  box-shadow: rgb(0, 0, 0) 3px 3px 0px 0px;
+}
+
+.reviews-load-more-reviews:hover {
+  background-color: aliceblue;
+  cursor: pointer;
+}
+
+.reviews-loader-container {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.review-image-small {
+  height: 50px;
+  margin-top: 20px;
+  margin-left: 10px;
+  box-shadow: rgb(0, 0, 0) 1px 1px 2px 1px;
+}
+
+.review-image-small:hover {
+  cursor: pointer;
+  box-shadow: rgb(33, 143, 0) 1px 1px 2px 1px;
+}
+
+.view-tahar-response-button {
+  margin-right: 15px;
+  margin-top: 10px;
+  background-color: rgb(142, 136, 224);
+  border-radius: 10px;
+  box-shadow: black 1px 1px 3px 0px;
+}
+
+.view-tahar-response-button:hover {
+  box-shadow: rgb(5, 153, 0) 1px 1px 2px 1px;
+  cursor: pointer;
+}
+
+.container-with-review-info-and-response-button {
+  display: flex;
+  justify-content: space-between;
+}  */
+
+
+.custom-load-reviews-button {
+  border: rgb(0, 217, 255) solid 1px;
+  box-shadow: black 3px 3px 4px 2px;
+}
+
+.custom-reviews-card {
+  box-shadow: black 0px 2px 4px 2px;
+}
+
+.custom-review-img {
+  box-shadow: black 2px 2px 4px 2px;
+  border-radius: 10px;
+}
+
+.custom-review-img:hover {
+  box-shadow: rgb(0, 102, 128) 2px 2px 4px 2px;
+  cursor: pointer;
+}

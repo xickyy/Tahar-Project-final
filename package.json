@@ -1,8 +1,10 @@
 {
   "scripts": {
-    "start": "cd frontend && npm start",
+    "start": "npm start --prefix frontend",
     "build": "npm run build-frontend && npm run build-backend",
     "build-frontend": "cd frontend && npm install",
-    "build-backend": "cd backend && npm install && npm run start"
+    "build-backend": "cd backend && npm install && npm run start",
+    "render-postbuild": "npm run build --prefix frontend",
+    "install": "npm --prefix backend install backend && npm --prefix frontend install frontend"
   }
 }

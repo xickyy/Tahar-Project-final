@@ -1,12 +1,8 @@
 {
   "scripts": {
-    "build": "npm run build --prefix backend",
-    "dev:backend": "npm install --prefix backend start",
-    "dev:frontend": "npm install --prefix frontend start",
-    "install": "npm --prefix backend install backend && npm --prefix frontend install frontend",
-    "render-postbuild": "npm run build --prefix frontend",
-    "sequelize": "npm run --prefix backend sequelize",
-    "sequelize-cli": "npm run --prefix backend sequelize-cli",
-    "start": "npm start --prefix frontend"
+    "start": "cd frontend && npm start",
+    "build": "npm run build-frontend && npm run build-backend",
+    "build-frontend": "cd frontend && npm install && npm run build",
+    "build-backend": "cd backend && npm install && npm run start"
   }
 }

@@ -7,6 +7,6 @@
     "render-postbuild": "npm run build --prefix frontend",
     "sequelize": "npm run --prefix backend sequelize",
     "sequelize-cli": "npm run --prefix backend sequelize-cli",
-    "start": "npm start --prefix backend"
+    "start": "npm start --prefix frontend"
   }
 }

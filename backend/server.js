@@ -7,11 +7,11 @@ const PORT = 8000;
 
 app.use(cors());
 
-// Define a route to fetch Google Business Profile information
+
 app.get('/api/business-profile', async (req, res) => {
   try {
     const apiKey = 'AIzaSyD254Fwgs-RkYHwu9J5yzkzfULuRloRPNE';
-    const placeId = 'ChIJ8TY5ftdZwoARFnMG6kgar6w'; // Replace with the actual Place ID
+    const placeId = 'ChIJ8TY5ftdZwoARFnMG6kgar6w';
 
     const response = await axios.get(
       `https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&key=${apiKey}`

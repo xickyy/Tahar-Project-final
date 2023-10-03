@@ -9,7 +9,7 @@ const BusinessProfile = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await csrfFetch('/businessProfile');
+        const response = await csrfFetch('http://localhost:10000/businessProfiles');
 
         if (!response.ok) {
           throw new Error('Network response was not ok');

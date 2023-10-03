@@ -7,33 +7,33 @@ const BusinessProfile = () => {
   const [businessData, setBusinessData] = useState(null);
 
   useEffect(() => {
-    // const getData = async () => {
-    //   try {
-    //     const response = await csrfFetch('/api/business-profile');
+    const getData = async () => {
+      try {
+        const response = await csrfFetch('/api/business-profile');
 
-    //     if (!response.ok) {
-    //       throw new Error('Network response was not ok');
-    //     }
-
-    //     const data = await response.json();
-    //     setBusinessData(data);
-    //   } catch (error) {
-    //     console.error('Error fetching data:', error);
-    //   }
-    // };
-
-    // getData();
-
-    // Fetch the Google Business Profile data from the backend
-    fetch('http://localhost:8000/api/business-profile')
-      .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-        return response.json();
-      })
-      .then((data) => setBusinessData(data))
-      .catch((error) => console.error('Error fetching data:', error));
+
+        const data = await response.json();
+        setBusinessData(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    getData();
+
+    // Fetch the Google Business Profile data from the backend
+    // fetch('http://localhost:8000/api/business-profile')
+    //   .then((response) => {
+    //     if (!response.ok) {
+    //       throw new Error('Network response was not ok');
+    //     }
+    //     return response.json();
+    //   })
+    //   .then((data) => setBusinessData(data))
+    //   .catch((error) => console.error('Error fetching data:', error));
   }, []);
 
   // Function to render star ratings

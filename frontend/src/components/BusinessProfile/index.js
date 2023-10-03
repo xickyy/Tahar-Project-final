@@ -9,7 +9,7 @@ const BusinessProfile = () => {
   useEffect(() => {
     const getData = async () => {
       // try {
-      //   const response = await csrfFetch('/business-profile');
+      //   const response = await csrfFetch('/businessProfile');
 
       //   if (!response.ok) {
       //     throw new Error('Network response was not ok');
@@ -25,15 +25,15 @@ const BusinessProfile = () => {
     getData();
 
     // Fetch the Google Business Profile data from the backend
-    // fetch('http://localhost:8000/api/business-profile')
-    //   .then((response) => {
-    //     if (!response.ok) {
-    //       throw new Error('Network response was not ok');
-    //     }
-    //     return response.json();
-    //   })
-    //   .then((data) => setBusinessData(data))
-    //   .catch((error) => console.error('Error fetching data:', error));
+    fetch('http://localhost:8000/businessProfiles')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => setBusinessData(data))
+      .catch((error) => console.error('Error fetching data:', error));
   }, []);
 
   // Function to render star ratings

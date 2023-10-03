@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 
-router.get('/api/business-profile', async (req, res) => {
+router.get('/business-profile', async (req, res) => {
   try {
     const apiKey = 'AIzaSyD254Fwgs-RkYHwu9J5yzkzfULuRloRPNE';
     const placeId = 'ChIJ8TY5ftdZwoARFnMG6kgar6w';

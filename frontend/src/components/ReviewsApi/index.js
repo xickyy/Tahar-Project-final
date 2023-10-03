@@ -2,21 +2,39 @@ import './ReviewsApi.css';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import google from '../BusinessProfile/google.png'
+import { csrfFetch } from './csrf'
 
 const ReviewsApi = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    // Fetch the reviews data from the backend
-    fetch('http://localhost:8000/api/business-profile')
-      .then((response) => {
+
+    const getData = async () => {
+      try {
+        const response = await csrfFetch('/api/businessProfile');
+
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-        return response.json();
-      })
-      .then((data) => setReviews(data.reviews))
-      .catch((error) => console.error('Error fetching reviews:', error));
+
+        const data = await response.json();
+        setReviews(data.reviews);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    getData();
+    // Fetch the reviews data from the backend
+    // fetch('http://localhost:8000/api/businessProfile')
+    //   .then((response) => {
+    //     if (!response.ok) {
+    //       throw new Error('Network response was not ok');
+    //     }
+    //     return response.json();
+    //   })
+    //   .then((data) => setReviews(data.reviews))
+    //   .catch((error) => console.error('Error fetching reviews:', error));
   }, []);
 
   console.log(reviews)

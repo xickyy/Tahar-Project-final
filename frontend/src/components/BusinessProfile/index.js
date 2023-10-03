@@ -8,18 +8,18 @@ const BusinessProfile = () => {
 
   useEffect(() => {
     const getData = async () => {
-      try {
-        const response = await csrfFetch('/api/business-profile');
+      // try {
+      //   const response = await csrfFetch('/business-profile');
 
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
+      //   if (!response.ok) {
+      //     throw new Error('Network response was not ok');
+      //   }
 
-        const data = await response.json();
-        setBusinessData(data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
+      //   const data = await response.json();
+      //   setBusinessData(data);
+      // } catch (error) {
+      //   console.error('Error fetching data:', error);
+      // }
     };
 
     getData();

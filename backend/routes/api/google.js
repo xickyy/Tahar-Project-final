@@ -1,14 +1,8 @@
 const express = require('express');
-const cors = require('cors');
+const router = express.Router();
 const axios = require('axios');
 
-const app = express();
-const PORT = 8000;
-
-app.use(cors());
-
-
-app.get('/api/business-profile', async (req, res) => {
+router.get('/api/business-profile', async (req, res) => {
   try {
     const apiKey = 'AIzaSyD254Fwgs-RkYHwu9J5yzkzfULuRloRPNE';
     const placeId = 'ChIJ8TY5ftdZwoARFnMG6kgar6w';
@@ -25,6 +19,4 @@ app.get('/api/business-profile', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+module.exports = router;

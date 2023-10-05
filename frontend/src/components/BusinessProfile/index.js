@@ -58,7 +58,7 @@ const BusinessProfile = () => {
         <div className="bg-blue-900 text-white text-center rounded-b-2xl lg:h-96 custom-business-profile ">
           <a
             href={`https://www.google.com/maps/place/?q=place_id:${businessData.place_id}`}
-            target="_blank"
+            // target="_blank"
             rel="noopener noreferrer"
           >
             <img className='h-12 absolute mt-16 custom-google-business-link' src={google} alt=''></img>
@@ -66,7 +66,7 @@ const BusinessProfile = () => {
           <h2 className="pt-2">
             <a
               href={`https://www.google.com/maps/place/?q=place_id:${businessData.place_id}`}
-              target="_blank"
+              // target="_blank"
               rel="noopener noreferrer"
             >
               {businessData.name}

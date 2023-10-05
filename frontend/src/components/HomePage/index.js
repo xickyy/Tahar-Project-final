@@ -95,9 +95,9 @@ const HomePage = () => {
             <h3 className='md:hidden lg:block m-6 text-xl md:text-3xl lg:text-5xl text-center'>Tahar Garage Door Services in Palmdale & Lancaster</h3>
             <p className='md:hidden lg:block m-4 md:mr-12 md:ml-12 md:text-2xl'>Tahar Garage Door Services provides excellent customer service specializing in all of your garage door needs. From fixing a minor mishap to installing a completely new garage door, we’ve got you covered! We offer free estimates in a timely manner. We only use high quality materials so it will withstand all seasons, daily use, and remain durable. All materials & labor provided include warranty. Give us a call today! Family owned and operated! Serving the Antelope Valley community since 2015 including: Palmdale, Lancaster, Littlerock, Quartz Hill, Acton, Lake Los Angeles, Rosamond, Mojave and everything in between!</p>
             <div className='flex flex-col md:space-y-4'>
-              <img className='mr-2' src={call} alt=''></img>
-              <img className='hidden lg:block' src={door} alt=''></img>
-              <img className='xl:hidden mr-2' src={satisfaction} alt=''></img>
+              <img className='md:mr-2' src={call} alt=''></img>
+              <img className='hidden lg:block mr-2' src={door} alt=''></img>
+              <img className='xl:hidden' src={satisfaction} alt=''></img>
               <img className='hidden xl:block mr-2' src={satisfaction2} alt=''></img>
             </div>
           </div>

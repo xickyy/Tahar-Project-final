@@ -8,7 +8,7 @@ function OpenLargeImg({review}) {
 
   return (
     <div className="m-2">
-      <img className="open-large-image-img w-full h-full max-w-full " src={review} alt=''></img>
+      <img className="open-large-image-img w-full h-full max-w-full z-40" src={review} alt=''></img>
     </div>
     )
 }

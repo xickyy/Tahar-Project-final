@@ -71,7 +71,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <Link to='/'><img id="top" onClick={scrollToTop} className='w-24 h-24 mt-4 mx-auto rounded-full' src={image} alt='LOGO'></img></Link>
+      <Link to='/' id="top" onClick={scrollToTop}><img className='w-24 h-24 mt-4 mx-auto rounded-full' src={image} alt='LOGO'></img></Link>
     </div>
   );
 };

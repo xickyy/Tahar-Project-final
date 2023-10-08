@@ -3,7 +3,6 @@ const router = express.Router();
 const axios = require('axios');
 
 router.get('/businessProfile', async (req, res) => {
-  console.log('Route is reached &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&.')
   try {
     const apiKey = 'AIzaSyD254Fwgs-RkYHwu9J5yzkzfULuRloRPNE';
     const placeId = 'ChIJ8TY5ftdZwoARFnMG6kgar6w';

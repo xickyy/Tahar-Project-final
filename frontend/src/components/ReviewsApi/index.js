@@ -25,19 +25,8 @@ const ReviewsApi = () => {
     };
 
     getData();
-    // Fetch the reviews data from the backend
-    // fetch('http://localhost:8000/api/businessProfile')
-    //   .then((response) => {
-    //     if (!response.ok) {
-    //       throw new Error('Network response was not ok');
-    //     }
-    //     return response.json();
-    //   })
-    //   .then((data) => setReviews(data.reviews))
-    //   .catch((error) => console.error('Error fetching reviews:', error));
   }, []);
 
-  console.log(reviews)
 
   // Function to render star ratings
   const renderStars = (rating) => {

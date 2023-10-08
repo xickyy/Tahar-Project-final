@@ -10,7 +10,6 @@ const BusinessProfile = () => {
     const getData = async () => {
       try {
         const response = await csrfFetch('/api/businessProfile/businessProfile');
-        console.log('%%%%%%%%%%%%%%%%%%%',response)
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

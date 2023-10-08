@@ -26,22 +26,6 @@ const Header = () => {
     };
   }, []);
 
-  //   document.addEventListener("DOMContentLoaded", function () {
-  //     const toggleButton = document.querySelector(".toggle-button");
-  //     const slideInDiv = document.querySelector(".custom-menu-slide");
-
-  //     let isOpen = false;
-
-  //     toggleButton.addEventListener("click", function () {
-  //         if (!isOpen) {
-  //             slideInDiv.style.animation = "slideIn 1s forwards";
-  //         } else {
-  //             slideInDiv.style.animation = "slideOut 1s forwards";
-  //         }
-
-  //         isOpen = !isOpen;
-  //     });
-  // });
 
   return (
     <header className="bg-blue-900 text-white">
@@ -53,7 +37,7 @@ const Header = () => {
         <div>
             <p className='xl:text-6xl lg:text-4xl md:text-2xl text-center'>Tahar Garage Door Repair Services</p>
 
-          <div className="md:hidden">
+          <div className="custom-call-header-scrolly md:hidden">
             <a
               className="w-48 mr-2 ml-2 mb-2 bg-red-600 hover:bg-green-600 text-white py-1 px-4 rounded-3xl inline-block text-center"
               href="tel:661-202-8255"

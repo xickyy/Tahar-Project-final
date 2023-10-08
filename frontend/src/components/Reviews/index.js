@@ -36,7 +36,6 @@ const Reviews = () => {
   const ifImage = (images) => {
     if (images) {
       let arr = images.split(',');
-      console.log(arr);
       return (
         arr.map((image, index) => (
           <div key={index} className='mr-2 mt-2'>

@@ -50,7 +50,7 @@ const Header = () => {
 
         <div className="hidden md:flex justify-between py-4 text-center">
           <a
-            className="w-32 mr-4 ml-2 mb-2 md:my-0 bg-red-600 hover:bg-green-600 text-white py-2 px-4 rounded-lg inline-block md:w-32"
+            className="w-32 mr-4 ml-2 mb-2 md:my-0 bg-red-600 hover:bg-green-600 text-white py-2 px-4 rounded-lg inline-block"
             href="tel:661-202-8255"
           >
             Call/Text For A Free Quote! 661-202-8255

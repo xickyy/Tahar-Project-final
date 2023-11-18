@@ -5,6 +5,8 @@ import springs2 from './images/springs2.jpeg';
 import motor from './images/motor.jpeg';
 import motor2 from './images/motor2.jpeg';
 import header from './images/header.jpeg';
+import track from './images/track.jpeg';
+import track2 from './images/track2.jpeg';
 
 const Services = () => {
   return (
@@ -54,6 +56,18 @@ const Services = () => {
             Opener Not Responding: Sometimes, the garage door opener may not respond to remote commands. This could be due to electrical issues, such as a blown fuse or a tripped circuit breaker. In such cases, a professional electrician may be required to diagnose and repair the problem.
 
             Door Reversal Issues: If the garage door reverses without apparent cause, it may indicate a problem with the safety sensors, the door's balance, or the opener's force settings. Adjustments may be needed to correct these issues.</p>
+        </div>
+      </div>
+
+      <div className='lg:flex justify-around p-2 m-2'>
+        <div className='flex justify-around lg:flex-col xl:flex-row ml-2 xl:my-auto'>
+          <img className='w-40 lg:w-64 rounded-lg m-2 custom-service-img' src={track} alt=''></img>
+          <img className='w-40 lg:w-64 rounded-lg m-2 custom-service-img' src={track2} alt=''></img>
+        </div>
+        <div className='lg:w-1/2'>
+          <h2 className='text-center text-2xl underline'>Doors off Track</h2>
+          <p className='mt-4'>If your garage door is off track, it's important to refrain from operating it further. Attempting to use the door in this condition can cause more damage. It's advisable to contact a professional garage door technician to assess and repair the issue</p>
+          <p className='mt-4'>A door that has fallen off It's track may not seem like a big problem and you may think attmpting a DIY might be a good idea however because of many factors including the weight of the door and the tension on the springs and cables can offten times cause further damage to the door or worse, injury to yourself. </p>
         </div>
       </div>
 

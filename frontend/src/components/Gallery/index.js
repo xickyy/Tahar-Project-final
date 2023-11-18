@@ -63,7 +63,7 @@ const Gallery = () => {
       <div className='flex flex-wrap justify-center'>
         {
           allImages.map(image => (
-            <img className='m-1 h-44 w-44 object-cover custom-gallery-image-preview' src={image}
+            <img className='m-1 h-44 w-44 object-cover custom-gallery-image-preview' src={image} alt=''
               onClick={() => {
                 setModalContent(<OpenLargeImg review={image} />);
               }}>

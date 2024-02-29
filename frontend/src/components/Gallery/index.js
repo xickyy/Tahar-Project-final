@@ -41,6 +41,8 @@ import image44 from './images/44.jpeg';
 import image45 from './images/45.jpeg';
 import image46 from './images/46.jpeg';
 import image47 from './images/47.jpeg';
+import image48 from './images/48.jpeg';
+import image49 from './images/49.jpeg';
 
 import OpenLargeImg from '../OpenLargeImg';
 import { useModal } from '../../context/Modal';
@@ -52,7 +54,7 @@ const Gallery = () => {
 
   let allImages = [image1, image2, image3, image4, image5, image6, image7, image8, image9, image10, image11, image12, image13, image14, image15, image16, image17, image18,
     image19, image20, image21, image22, image23, image24, image25, image26, image27, image28, image29, image30, image32, image38, image39, image40, image41, image42, image43,
-    image44, image45, image46, image47]
+    image44, image45, image46, image47, image48, image49]
 
   return (
     <>

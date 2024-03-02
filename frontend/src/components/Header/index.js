@@ -35,7 +35,7 @@ const Header = () => {
         </Link>
 
         <div>
-            <p className='xl:text-6xl lg:text-4xl md:text-2xl text-center'>Tahar Garage Door Repair Services</p>
+            <p className='xl:text-6xl lg:text-4xl md:text-2xl text-center'>Tahar Garage Door Services</p>
 
           <div className="custom-call-header-scrolly md:hidden">
             <a

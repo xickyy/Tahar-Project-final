@@ -1,5 +1,8 @@
 import './Services.css';
 
+import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+
 import springs from './images/springs.jpeg';
 import springs2 from './images/springs2.jpeg';
 import motor from './images/motor.jpeg';
@@ -13,7 +16,40 @@ const Services = () => {
     <div className=''>
 
       <img className='w-screen' src={header} alt=''></img>
-      <h2 className='text-center text-4xl text-blue-900 underline'>Services</h2>
+      <div className='services-grid-container'>
+        <Link to='/services/tips' className='service-links'>
+          Tips & tricks
+        </Link>
+
+        <Link to='/services/doors' className='service-links'>
+          Garage Doors
+        </Link>
+
+        <Link to='/services/motors' className='service-links'>
+          Motors / Openers
+        </Link>
+
+        <Link to='/services/sensors' className='service-links'>
+          Sensors
+        </Link>
+
+        <Link to='/services/tracks' className='service-links'>
+          Tracks
+        </Link>
+
+        <Link to='/services/springs' className='service-links'>
+          Springs
+        </Link>
+      </div>
+
+
+
+
+
+
+
+
+      {/* <h2 className='text-center text-4xl text-blue-900 underline'>Services</h2>
 
       <div className='lg:flex justify-around p-2 m-2'>
         <div className='flex justify-around lg:flex-col xl:flex-row ml-2 xl:my-auto'>
@@ -69,7 +105,7 @@ const Services = () => {
           <p className='mt-4'>If your garage door is off track, it's important to refrain from operating it further. Attempting to use the door in this condition can cause more damage. It's advisable to contact a professional garage door technician to assess and repair the issue</p>
           <p className='mt-4'>A door that has fallen off It's track may not seem like a big problem and you may think attmpting a DIY might be a good idea however because of many factors including the weight of the door and the tension on the springs and cables can offten times cause further damage to the door or worse, injury to yourself. </p>
         </div>
-      </div>
+      </div> */}
 
     </div>
   );

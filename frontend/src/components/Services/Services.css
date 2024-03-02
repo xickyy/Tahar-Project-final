@@ -1,3 +1,40 @@
 .custom-service-img {
   box-shadow: black 0px 0px 4px 2px;
 }
+
+.services-grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 25px;
+  padding: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+@media screen and (max-width: 415px) {
+  .services-grid-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+
+.service-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  text-align: center;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 35px;
+  text-decoration: none;
+  border: solid black 2px;
+  box-shadow: blue 0px 3px 10px 0px;
+}
+
+.service-links:hover {
+  box-shadow: rgb(1, 255, 1) 0px 3px 10px 0px;
+}

@@ -12,6 +12,14 @@ import About from './components/About';
 import Services from './components/Services';
 import Footer from './components/Footer';
 
+//service pages
+import Tipsntricks from './components/Tipsntricks';
+import Doorspage from './components/Doorspage';
+import MotorsPage from './components/MotorsPage';
+import SensorsPage from './components/SensorsPage';
+import TracksPage from './components/TracksPage';
+import SpringsPage from './components/SpringsPage';
+
 function App() {
   return (
     <div className="App">
@@ -30,6 +38,12 @@ function App() {
           <Route exact path ='/getquote' element={<GetQuote />}/>
           <Route exact path = '/about' element={<About />}/>
           <Route exact path = '/services' element={<Services />}/>
+          <Route exact path = '/services/tips' element={<Tipsntricks />}/>
+          <Route exact path = '/services/doors' element={<Doorspage />}/>
+          <Route exact path = '/services/motors' element={<MotorsPage />}/>
+          <Route exact path = '/services/sensors' element={<SensorsPage />}/>
+          <Route exact path = '/services/tracks' element={<TracksPage />}/>
+          <Route exact path = '/services/springs' element={<SpringsPage />}/>
 
         </Routes>
 

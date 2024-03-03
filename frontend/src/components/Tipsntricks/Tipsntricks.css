@@ -1,0 +1,19 @@
+.custom-tips-title {
+  min-width: 200px;
+  margin-left: 10px;
+  background-color: rgb(0, 183, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+@media screen and (min-width: 416px) {
+  .tips-list-el {
+    display: flex;
+  }
+
+  .custom-tips-info {
+    width: 100vw;
+  }
+}

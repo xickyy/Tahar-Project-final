@@ -3,7 +3,7 @@ import './Tipsntricks.css';
 function Tipsntricks() {
   return (
     <div>
-      <h2 className='text-center font-bold text-2xl mb-4 underline'>Tips & Tricks</h2>
+      <h2 className='text-center font-bold text-2xl mb-4 underline'>Garage Door Tips & Tricks</h2>
       <div className='tips-list-el'>
         <p className='font-bold mr-2 whitespace-nowrap border border-black mb-2 custom-tips-title'>Regular Inspection:</p>
         <p className='flex border border-black mb-2 ml-2 mr-2 p-2 custom-tips-info'>Perform routine checks on your garage door at least once a month. Look for any signs of wear and tear, such as frayed cables, loose hardware, or misalignment.</p>
@@ -44,6 +44,7 @@ function Tipsntricks() {
         <p className='font-bold mr-2 whitespace-nowrap border border-black mb-2 custom-tips-title'>Professional Maintenance:</p>
         <p className='flex border border-black mb-2 ml-2 mr-2 p-2 custom-tips-info'>Consider scheduling annual maintenance with a professional garage door technician. They can perform thorough inspections, adjustments, and lubrication to keep your door in top condition.</p>
       </div>
+      <p className='text-center text-xl mb-6 mt-4'>By following these maintenance tips, you can help prolong the life of your garage door and ensure it continues to operate safely and smoothly.</p>
     </div>
   );
 }

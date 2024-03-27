@@ -29,13 +29,13 @@ const Header = () => {
 
   return (
     <header className="bg-blue-900 text-white">
-      <div className="mx-5 flex items-center justify-between">
+      <div className="mx-2 flex items-center justify-between">
         <Link to="/">
-          <img className="w-32  md:mt-5 rounded-full border-2 border-black" src={image} alt="LOGO" />
+          <img className="w-32  md:mt-5 rounded-full border-2 border-black mb-2 mt-2" src={image} alt="LOGO" />
         </Link>
 
         <div>
-            <p className='xl:text-6xl lg:text-4xl md:text-2xl text-center tahar-header-text'>Tahar Garage Door Services</p>
+            <p className='text-lg xl:text-6xl lg:text-4xl md:text-2xl text-center tahar-header-text mb-4'>Tahar Garage Door Services</p>
 
           <div className="custom-call-header-scrolly md:hidden">
             <a
@@ -58,7 +58,7 @@ const Header = () => {
         </div>
         {/* Show the button only on screens the size of a mobile device */}
         <button
-          className="md:hidden bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded-lg toggle-button"
+          className="md:hidden bg-blue-500 hover:bg-blue-600 h-14 mt-9 text-white px-2 py-1 rounded-lg toggle-button"
           onClick={toggleMobileMenu}
         >
           {isMobileMenuOpen ? 'Close' : 'Menu'}

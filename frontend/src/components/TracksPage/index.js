@@ -1,15 +1,19 @@
 import './TracksPage.css';
+import track from "./12.jpeg"
 
 function TracksPage() {
   return (
     <div>
+      <div className='p-2'>
+        <img className='border border-black' src={track}></img>
+      </div>
       <h2 className='text-center font-bold text-2xl mb-4 underline'>Garage Door Tracks</h2>
       <div className='text-center m-2'>
         <p>Welcome to Tahar Garage Door Services, your premier destination for expert garage door track repairs and installations. Our team specializes in seamlessly addressing all your garage door track needs, ensuring smooth functionality every time.
 
-            From simple realignments to complete track replacements, we've got you covered. We understand the nuances of garage door systems, and we always recommend seeking professional assistance rather than attempting DIY fixes. Garage doors are not only heavy but also intricate mechanisms, and mishandling them can lead to serious injuries. Trust our skilled technicians to handle the job safely and efficiently.
+          From simple realignments to complete track replacements, we've got you covered. We understand the nuances of garage door systems, and we always recommend seeking professional assistance rather than attempting DIY fixes. Garage doors are not only heavy but also intricate mechanisms, and mishandling them can lead to serious injuries. Trust our skilled technicians to handle the job safely and efficiently.
 
-            Contact Tahar Garage Door Services today for reliable solutions that prioritize both your safety and the optimal performance of your garage door. Below you can find some additional information about Garage door tracks.</p>
+          Contact Tahar Garage Door Services today for reliable solutions that prioritize both your safety and the optimal performance of your garage door. Below you can find some additional information about Garage door tracks.</p>
       </div>
       <div className='tips-list-el'>
         <p className='font-bold mr-2 whitespace-nowrap border border-black custom-tips-title border-b-0'>Types:</p>

@@ -1,8 +1,13 @@
 import './MotorsPage.css';
+import motor from "./motor.jpeg"
+import haimMotor from "./haimMotor.jpeg"
 
 function MotorsPage() {
   return (
     <div>
+      <div className='p-2'>
+        <img className='border border-black' src={motor}></img>
+      </div>
       <h2 className='text-center font-bold text-2xl mb-4 underline'>Motors / Openers</h2>
 
       <div className='text-center m-2'>
@@ -40,6 +45,10 @@ function MotorsPage() {
 
       <div>
         <p className="ml-4 mr-4 mb-4 text-lg">At Tahar Garage Door Services, we're dedicated to providing cutting-edge garage door motor and opener solutions that combine innovation, reliability, and convenience. Contact us today to learn more about our products and services, and let us help you upgrade your garage door for a safer, smarter, and more convenient home experience.</p>
+      </div>
+
+      <div className='p-2'>
+        <img className='border border-black' src={haimMotor}></img>
       </div>
 
     </div>

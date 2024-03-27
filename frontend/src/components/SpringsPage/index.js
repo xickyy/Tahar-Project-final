@@ -1,9 +1,14 @@
 import './SpringsPage.css';
+import springs from "../Gallery/images/22.jpeg"
+import springsHead from "./2.jpeg"
 
 function SpringsPage() {
   return (
     <div>
+      <img className='border border-black' src={springsHead}></img>
+
       <h2 className='text-center font-bold text-2xl mb-4 underline'>Springs</h2>
+
 
       <div className='text-center m-2'>
         <p className="ml-2 mr-2 mb-4 text-lg" >Focusing on garage door springs, here's how Tahar Garage Door Services can assist you:</p>
@@ -40,6 +45,10 @@ function SpringsPage() {
 
       <div>
         <p className="ml-4 mr-4 mb-4 text-lg">Trust Tahar Garage Door Services for all your garage door spring needs. Our commitment to quality, reliability, and customer satisfaction sets us apart as your premier choice for garage door services. Contact us today to schedule an appointment or learn more about how we can help you keep your garage door operating smoothly and safely.</p>
+      </div>
+
+      <div className='p-2'>
+        <img className='border border-black' src={springs}></img>
       </div>
 
     </div>

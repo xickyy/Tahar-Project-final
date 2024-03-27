@@ -1,8 +1,13 @@
 import './Doorspage.css';
+import door from "./7.jpeg"
 
 function Doorspage() {
   return (
     <div>
+      <div className='p-2'>
+        <img className='border border-black' src={door}></img>
+      </div>
+
       <h2 className='text-center font-bold text-2xl mb-4 underline'>Garage Doors</h2>
       <p className="ml-2 mr-2 mb-4 text-lg">If you're considering upgrading your garage door or need assistance with repairs, you're in the right place. As a leading provider of garage door solutions, we pride ourselves on delivering top-notch service and products tailored to meet your needs. Here are some key points and tips to consider when it comes to garage doors:</p>
 

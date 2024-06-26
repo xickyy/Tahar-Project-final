@@ -6,7 +6,7 @@ import door from './door.jpeg';
 const About = () => {
   return (
     <div>
-      <h2 className='text-center text-2xl text-blue-900 underline mb-6 mt-4'>About Tahar Garage Door Services</h2>
+      <h2 className='text-center text-2xl text-black-900 underline mb-6 mt-4'>About Tahar Garage Door Services</h2>
       <div className='about-custom-container'>
         <p className='p-2 text-lg'>Tahar Garage Door Services provides excellent customer service, specializing in all of your garage door service Cneeds. We’ve got you covered from fixing a
           minor mishap to installing a completely new garage door! We offer free estimates in a timely manner. We only use high-quality materials so they will withstand all seasons, daily use,

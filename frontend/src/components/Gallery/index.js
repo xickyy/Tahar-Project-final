@@ -43,6 +43,8 @@ import image46 from './images/46.jpeg';
 import image47 from './images/47.jpeg';
 import image48 from './images/48.jpeg';
 import image49 from './images/49.jpeg';
+import image50 from './images/50.jpeg';
+import image51 from './images/51.jpeg';
 
 import OpenLargeImg from '../OpenLargeImg';
 import { useModal } from '../../context/Modal';

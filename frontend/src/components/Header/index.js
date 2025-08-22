@@ -9,7 +9,7 @@ const LINKS = [
   { to: "/services", label: "Services" },
   { to: "/gallery", label: "Gallery" },
   { to: "/faq", label: "FAQ" },
-  //{ to: "/contact", label: "Contact" },
+  // { to: "/contact", label: "Contact" },
 ];
 
 export default function Header() {
@@ -57,28 +57,26 @@ export default function Header() {
       {/* Main bar */}
       <div className="bg-blue-900/95 backdrop-blur header-shadow">
         <div className="mx-auto max-w-7xl px-4">
-          {/* Mobile uses 3-col grid to center title; desktop reverts to flex w/ links next to brand */}
-          <div className="h-20 grid grid-cols-[auto,1fr,auto] items-center gap-4 md:flex md:items-center md:justify-between">
-            {/* Left: brand */}
+          {/* MOBILE: single row (logo • title • menu) using 3-col grid
+              DESKTOP: flex with full title + nav links */}
+          <div className="grid grid-cols-[auto,1fr,auto] items-center h-16 md:flex md:h-20 md:items-center md:justify-between">
+            {/* Left: brand (logo only on mobile) */}
             <div className="flex items-center gap-3 min-w-0">
-              {/* Brand */}
-              <Link to="/" className="flex items-center gap-3 justify-self-start min-w-0">
-                <div className="h-12 w-12 md:h-14 md:w-14 shrink-0 rounded-full ring-2 ring-white/20 header-logo-shadow overflow-hidden bg-white/95 flex items-center justify-center">
+              <Link to="/" className="flex items-center gap-3 min-w-0">
+                <div className="h-11 w-11 md:h-14 md:w-14 shrink-0 rounded-full ring-2 ring-white/20 header-logo-shadow overflow-hidden bg-white/95 flex items-center justify-center">
                   <img
                     src={image}
                     alt="Tahar Logo"
                     className="h-full w-full object-contain"
                   />
                 </div>
-
-                {/* Desktop title */}
+                {/* Desktop brand title (hidden on mobile) */}
                 <span className="hidden md:block font-semibold tracking-tight text-lg md:text-xl lg:text-2xl">
                   Tahar Garage Door Services
                 </span>
               </Link>
 
-
-              {/* Desktop nav links (left-aligned, shows on md+) */}
+              {/* Desktop nav links */}
               <nav className="hidden md:flex items-center gap-6 ml-6">
                 {LINKS.map((l) => (
                   <NavLink key={l.to} to={l.to} className={navLinkClasses}>
@@ -88,16 +86,16 @@ export default function Header() {
               </nav>
             </div>
 
-            {/* Center: mobile-only single-line centered title */}
-            <div className="md:hidden justify-self-center text-center px-2">
+            {/* Center: mobile title (single line, centered, truncates) */}
+            <div className="md:hidden justify-self-center text-center px-1">
               <Link to="/" className="block">
-                <span className="font-semibold tracking-tight text-xl leading-tight whitespace-nowrap truncate max-w-[62vw]">
+                <span className="font-semibold tracking-tight text-base leading-tight whitespace-nowrap truncate max-w-[58vw]">
                   Tahar Garage Door Services
                 </span>
               </Link>
             </div>
 
-            {/* Right: CTA on desktop • Menu on mobile */}
+            {/* Right: CTA desktop • Menu mobile */}
             <div className="flex items-center gap-3 justify-self-end">
               <a
                 href="tel:661-202-8255"
@@ -118,7 +116,7 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile menu (slide-down) */}
+        {/* Mobile menu */}
         <div id="mobile-menu" className={`md:hidden mobile-menu ${open ? "open" : ""}`}>
           <div className="mx-auto max-w-7xl px-4 pb-4">
             <div className="grid gap-2 pt-2">

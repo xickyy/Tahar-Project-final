@@ -2,47 +2,55 @@ import "./BusinessProfile.css";
 import React, { useState, useEffect } from "react";
 import { csrfFetch } from "./csrf";
 import google from "./google.png";
-import StarRating from "../Stars"; // reuse your star component for visual consistency
+import StarRating from "../Stars";
 
-const BusinessProfile = () => {
+const PHONE = "(661) 202-8255";
+const TEL = "tel:661-202-8255";
+
+export default function BusinessProfile() {
   const [businessData, setBusinessData] = useState(null);
 
   useEffect(() => {
-    const getData = async () => {
+    (async () => {
       try {
         const res = await csrfFetch("/api/businessProfile/businessProfile");
-        if (!res.ok) throw new Error("Network response was not ok");
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
         setBusinessData(data);
       } catch (err) {
-        console.error("Error fetching data:", err);
+        console.error("BusinessProfile fetch failed:", err);
         setBusinessData(null);
       }
-    };
-    getData();
+    })();
   }, []);
 
-  // Build a safe photo URL if a photoreference exists (falls back gracefully)
+  // Try a few sources for the API key (backend → Vite → CRA)
+  const placesKey =
+    businessData?.googleApiKey ||
+    import.meta?.env?.VITE_GOOGLE_MAPS_API_KEY ||
+    import.meta?.env?.VITE_PLACES_API_KEY ||
+    process.env.REACT_APP_GOOGLE_MAPS_API_KEY ||
+    process.env.REACT_APP_PLACES_API_KEY ||
+    "";
+
+  const photoref = businessData?.photos?.[0]?.photo_reference;
+
+  // Only build the URL if we actually have a key and a photoref
   const photoUrl =
-    businessData?.photos?.[0]?.photo_reference
-      ? `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=${
-          businessData.photos[0].photo_reference
-        }&key=${
-          // support CRA and Vite env names if you move the key to env later
-          import.meta?.env?.VITE_PLACES_API_KEY ||
-          process.env.REACT_APP_PLACES_API_KEY ||
-          ""
-        }`
-      : "";
+    photoref && placesKey
+      ? `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=${encodeURIComponent(
+          photoref
+        )}&key=${encodeURIComponent(placesKey)}`
+      : null;
 
   const placeLink = businessData?.place_id
     ? `https://www.google.com/maps/place/?q=place_id:${businessData.place_id}`
     : undefined;
 
-  // Skeleton while loading
+  // Skeleton while loading / or fetch failed
   if (!businessData) {
     return (
-      <div className="bp-card">
+      <article className="bp-card">
         <div className="bp-header bp-skeleton" />
         <div className="bp-body">
           <div className="bp-line bp-skeleton" />
@@ -50,13 +58,13 @@ const BusinessProfile = () => {
           <div className="bp-line bp-skeleton" />
         </div>
         <div className="bp-photo bp-skeleton" />
-      </div>
+      </article>
     );
   }
 
   return (
     <article className="bp-card">
-      {/* Header bar */}
+      {/* Header */}
       <div className="bp-header flex items-center justify-between">
         <div className="flex items-center gap-3">
           <img src={google} alt="Google" className="h-4 w-auto" />
@@ -95,14 +103,14 @@ const BusinessProfile = () => {
 
         <a
           className="inline-flex items-center gap-2 text-blue-700 hover:text-blue-800 mt-3 text-sm font-medium"
-          href="tel:661-202-8255"
+          href={TEL}
         >
-          661-202-8255
+          {PHONE}
         </a>
       </div>
 
       {/* Photo (optional) */}
-      {photoUrl && (
+      {photoUrl ? (
         <a
           href={placeLink}
           target="_blank"
@@ -117,14 +125,15 @@ const BusinessProfile = () => {
             loading="lazy"
             referrerPolicy="no-referrer"
             onError={(e) => {
-              // Hide the image if Google blocks/hotlink fails
+              // If Google blocks via referrer/key, hide the image gracefully.
               e.currentTarget.style.display = "none";
+              console.warn(
+                "[BusinessProfile] Places photo blocked or key missing. Hiding image."
+              );
             }}
           />
         </a>
-      )}
+      ) : null}
     </article>
   );
-};
-
-export default BusinessProfile;
+}

@@ -1,59 +1,136 @@
-import './MotorsPage.css';
-import motor from "./motor.jpeg"
-import haimMotor from "./haimMotor.jpeg"
+import "./MotorsPage.css";
+import React from "react";
 
-function MotorsPage() {
+import motor from "./motor.jpeg";
+import haimMotor from "./haimMotor.jpeg";
+
+const PHONE = "(661) 202-8255";
+const TEL = "tel:661-202-8255";
+
+const POINTS = [
+  {
+    title: "Effortless operation",
+    text:
+      "Smooth, reliable open/close with chain or belt drives set up for your door’s weight and travel.",
+  },
+  {
+    title: "Quiet & dependable",
+    text:
+      "Modern belt-drive units run whisper-quiet—perfect near bedrooms or ADUs—while matching the strength you need.",
+  },
+  {
+    title: "Safety first",
+    text:
+      "We verify force limits, travel, and safety reversal. Photo-eyes aligned, tested, and secured on every job.",
+  },
+  {
+    title: "Smart control",
+    text:
+      "Open, close, and check status from your phone. MyQ®, Wi-Fi, HomeKit/Google/Alexa options available.",
+  },
+  {
+    title: "Security features",
+    text:
+      "Rolling-code remotes, encrypted accessories, and auto-lock options help keep your garage secure.",
+  },
+  {
+    title: "Battery backup options",
+    text:
+      "Stay operational during power outages with integrated battery backup models.",
+  },
+  {
+    title: "Pro install & maintenance",
+    text:
+      "We install, set, and test your opener the right way—and provide maintenance to keep it running for years.",
+  },
+];
+
+export default function MotorsPage() {
   return (
-    <div>
-      <div className='p-2 md:hidden'>
-        <img className='border border-black' src={motor}></img>
-      </div>
-      <h2 className='text-center font-bold text-2xl mb-4 underline'>Motors / Openers</h2>
+    <section className="mot-wrap">
+      {/* Banner
+      <figure className="mot-hero">
+        <img
+          src={haimMotor}
+          alt="Garage door opener installation banner"
+          className="mot-hero__img"
+          loading="eager"
+          decoding="async"
+        />
+      </figure>
+      */}
 
-      <div className='text-center m-2'>
-        <p className="ml-2 mr-2 mb-4 text-lg" >When it comes to the functionality and convenience of your garage door, the motor and opener play a crucial role. Here's why upgrading or maintaining your garage door motor and opener with us is a smart choice:</p>
-      </div>
+      <div className="container-pro">
+        {/* Title card */}
+        <div className="mot-headcard" role="region" aria-label="Openers & Motors">
+          <h1 className="mot-headcard__title">Openers &amp; Motors</h1>
+          <p className="mot-headcard__sub">
+            Same-day availability • Licensed &amp; insured • Family-owned since 2015
+          </p>
+          <div className="mot-headcard__cta">
+            <a href={TEL} className="btn btn--primary">Call / Text {PHONE}</a>
+          </div>
+        </div>
 
-      <div className='tips-list-el'>
-        <p className='font-bold mr-2 whitespace-nowrap border border-black custom-tips-title border-b-0 md:mb-2 md:border-b'>Effortless Operation:</p>
-        <p className='flex border border-black mb-2 ml-2 mr-2 p-2 custom-tips-info'>Tired of manually lifting your garage door? Say goodbye to the hassle with our state-of-the-art garage door motors and openers. Our systems provide smooth, quiet operation at the touch of a button, making it easier than ever to access your garage.</p>
-      </div>
-      <div className='tips-list-el'>
-        <p className='font-bold mr-2 whitespace-nowrap border border-black custom-tips-title border-b-0 md:mb-2 md:border-b'>Enhanced Security Features:</p>
-        <p className='flex border border-black mb-2 ml-2 mr-2 p-2 custom-tips-info'>Our advanced garage door opener technology includes robust security features such as rolling code technology and encryption, ensuring that your garage remains secure against unauthorized access. Rest easy knowing that your belongings and loved ones are protected.</p>
-      </div>
-      <div className='tips-list-el'>
-        <p className='font-bold mr-2 whitespace-nowrap border border-black custom-tips-title border-b-0 md:mb-2 md:border-b'>Smart Home Integration: </p>
-        <p className='flex border border-black mb-2 ml-2 mr-2 p-2 custom-tips-info'>Take control of your garage door from anywhere with our smart home integration options. Whether you're at home or on the go, you can monitor and operate your garage door remotely using your smartphone or other connected devices, adding an extra layer of convenience and security to your lifestyle.</p>
-      </div>
-      <div className='tips-list-el'>
-        <p className='font-bold mr-2 whitespace-nowrap border border-black custom-tips-title border-b-0 md:mb-2 md:border-b'>Compatibility and Adaptability:</p>
-        <p className='flex border border-black mb-2 ml-2 mr-2 p-2 custom-tips-info'>Our garage door motors and openers are designed to be compatible with a wide range of garage door systems, ensuring seamless integration with your existing setup. Plus, with customizable settings and features, you can tailor your opener to suit your specific needs and preferences.</p>
-      </div>
-      <div className='tips-list-el'>
-        <p className='font-bold mr-2 whitespace-nowrap border border-black custom-tips-title border-b-0 md:mb-2 md:border-b'>Safety First:</p>
-        <p className='flex border border-black mb-2 ml-2 mr-2 p-2 custom-tips-info'>Safety is our top priority. Our garage door motors and openers are equipped with sensors and safety mechanisms to detect obstructions and prevent accidents. With features like automatic reverse functionality, you can trust that your garage door will operate safely around pets, children, and belongings.</p>
-      </div>
-      <div className='tips-list-el'>
-        <p className='font-bold mr-2 whitespace-nowrap border border-black custom-tips-title border-b-0 md:mb-2 md:border-b'>Quiet and Reliable Performance:</p>
-        <p className='flex border border-black mb-2 ml-2 mr-2 p-2 custom-tips-info'>Nobody wants a noisy garage door disrupting their peace and quiet. Our motors are engineered for whisper-quiet operation, so you can enjoy smooth, reliable performance without the racket.</p>
-      </div>
-      <div className='tips-list-el'>
-        <p className='font-bold mr-2 whitespace-nowrap border border-black custom-tips-title border-b-0 md:mb-2 md:border-b'>Expert Installation and Maintenance:</p>
-        <p className='flex border border-black mb-2 ml-2 mr-2 p-2 custom-tips-info'>Leave the installation and maintenance to the professionals. Our team of skilled technicians will ensure that your garage door motor and opener are installed correctly and functioning optimally. Plus, we offer regular maintenance services to keep your system in top condition and extend its lifespan.</p>
-      </div>
+        {/* Content grid */}
+        <div className="mot-grid">
+          {/* Left column: benefits */}
+          <div className="mot-col">
+            <p className="mot-intro">
+              Whether you’re upgrading to a smart, quiet belt-drive or fixing a stubborn unit,
+              we install and service LiftMaster, Chamberlain, Genie, and more. We’ll size it
+              correctly, set limits and force, align sensors, and leave you with a smooth,
+              safe door.
+            </p>
 
-      <div>
-        <p className="ml-4 mr-4 mb-4 text-lg text-center">At Tahar Garage Door Services, we're dedicated to providing cutting-edge garage door motor and opener solutions that combine innovation, reliability, and convenience. Contact us today to learn more about our products and services, and let us help you upgrade your garage door for a safer, smarter, and more convenient home experience.</p>
-      </div>
+            <div className="mot-cards">
+              {POINTS.map((p, i) => (
+                <article key={i} className="mot-card">
+                  <h3 className="mot-card__title">{p.title}</h3>
+                  <p className="mot-card__text">{p.text}</p>
+                </article>
+              ))}
+            </div>
 
-      <div className='p-2 md:hidden'>
-        <img className='border border-black' src={haimMotor}></img>
-      </div>
+            <div className="mot-bottom-cta">
+              <p className="mot-bottom-cta__text">
+                Remote not working? Door won’t stay down? Opener hums but doesn’t move?
+                We can help—send a photo or give us a quick call.
+              </p>
+              <a href={TEL} className="btn">Call / Text {PHONE}</a>
+            </div>
+          </div>
 
-    </div>
+          {/* Right column: sticky aside */}
+          <aside className="mot-aside">
+            <div className="mot-aside__card">
+              <img
+                src={motor}
+                alt="Installed garage door opener motor"
+                className="mot-aside__img"
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="mot-aside__body">
+                <h4 className="mot-aside__title">Common opener issues</h4>
+                <ul className="mot-aside__list">
+                  <li>Remote/keypad not responding</li>
+                  <li>Hums but doesn’t move the door</li>
+                  <li>Door reverses at the floor</li>
+                  <li>Noisy chain or jerky travel</li>
+                  <li>Sensors blinking or misaligned</li>
+                </ul>
+                <a href={TEL} className="btn btn--full">Call / Text {PHONE}</a>
+                <div className="mot-badges">
+                  <span className="chip">Same-day service</span>
+                  <span className="chip">Licensed &amp; insured</span>
+                  <span className="chip">Smart control</span>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
   );
-};
-
-
-export default MotorsPage;
+}

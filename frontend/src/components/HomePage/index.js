@@ -1,119 +1,232 @@
-import React, { useState, useEffect } from 'react';
-import './HomePage.css';
+import React, { useState, useEffect } from "react";
 
-import ImageCarousel from '../ImageCarousel';
-import BusinessProfile from '../BusinessProfile';
-import AntelopeValleyMap from '../GoogleMap';
-import ReviewsApi from '../ReviewsApi';
-import { useModal } from '../../context/Modal';
-import OpenLargeImg from '../OpenLargeImg';
+import ImageCarousel from "../ImageCarousel";
+import BusinessProfile from "../BusinessProfile";
+import AntelopeValleyMap from "../GoogleMap";
+import ReviewsApi from "../ReviewsApi";
+import { useModal } from "../../context/Modal";
+import OpenLargeImg from "../OpenLargeImg";
 
-import image1 from './bannerImages/AdobeStock_1.jpeg';
-import image2 from './bannerImages/AdobeStock_2.jpeg';
-import image3 from './bannerImages/AdobeStock_3.jpeg';
-import image4 from './bannerImages/AdobeStock_4.jpeg';
+import image1 from "./bannerImages/AdobeStock_1.jpeg";
+import image2 from "./bannerImages/AdobeStock_2.jpeg";
+import image3 from "./bannerImages/AdobeStock_3.jpeg";
+import image4 from "./bannerImages/AdobeStock_4.jpeg";
 
-import repairMan from './bannerImages/repairMan.jpeg';
-import repairMan2 from './bannerImages/repairMan2.jpeg';
-import discount1 from './bannerImages/seniorDiscount.jpg';
-import discount2 from './bannerImages/responderDiscount.jpg';
-import call from './bannerImages/callNow.jpeg';
-import satisfaction from './bannerImages/satisfaction.jpeg';
-import satisfaction2 from './bannerImages/satisfaction2.jpeg';
-import door from './bannerImages/door.jpg';
+import repairMan from "./bannerImages/repairMan.jpeg";
+import repairMan2 from "./bannerImages/repairMan2.jpeg";
+import discount1 from "./bannerImages/seniorDiscount.jpg";
+import discount2 from "./bannerImages/responderDiscount.jpg";
+import call from "./bannerImages/callNow.jpeg";
+import satisfaction from "./bannerImages/satisfaction.jpeg";
+import satisfaction2 from "./bannerImages/satisfaction2.jpeg";
+import door from "./bannerImages/door.jpg";
 
-
-const HomePage = () => {
-  const [word, setWord] = useState('springs');
+export default function HomePage() {
+  const [word, setWord] = useState("Springs");
   const [fadeOut, setFadeOut] = useState(false);
-
   const { setModalContent } = useModal();
 
   useEffect(() => {
-    const words = ['Springs', 'Doors', 'Tracks', 'Openers', 'Cables', 'Sensors', 'Remotes'];
-    let index = 1;
-
-    const timer = setInterval(() => {
-      setFadeOut(true); // Trigger fade-out animation
+    const words = ["Springs", "Doors", "Tracks", "Openers", "Cables", "Sensors", "Remotes"];
+    let i = 1;
+    const t = setInterval(() => {
+      setFadeOut(true);
       setTimeout(() => {
-        setWord(words[index]);
-        setFadeOut(false); // Reset fade-out animation
-        index = (index + 1) % words.length;
-      }, 1000); // Change the word after 500ms (0.5 seconds)
-    }, 4000); // Repeat every 2 seconds (2000 milliseconds)
-
-    return () => clearInterval(timer); // Cleanup on unmount
+        setWord(words[i]);
+        setFadeOut(false);
+        i = (i + 1) % words.length;
+      }, 200);
+    }, 2400);
+    return () => clearInterval(t);
   }, []);
 
-  let images = [image1, image2, image3, image4];
-  let phoneNumber = (<a className='home-page-phone-link hover:text-blue-700' href='tel:661-202-8255'>(661-202-8255)</a>)
+  const heroImages = [image1, image2, image3, image4];
+  const openImg = (src) => setModalContent(<OpenLargeImg review={src} />);
 
-  return (
-    <div className='home-page-container'>
-
-      <h2 className='z-10 absolute w-full flex place-content-center text-xl bg-sky-400/75 rounded-lg p-1 md:text-4xl lg:text-5xl'>
-        Call{phoneNumber}for help with -{' '}
-        <span className={`animated-word ${fadeOut ? 'fade-out' : ''}`}>
-          {word}
-        </span>
-      </h2>
-
-      <div className='home-page-content-container'>
-
+  const Feature = ({ title, desc, icon }) => (
+    <div className="card border-blue-100 hover:border-blue-200 hover:shadow-md transition">
+      <div className="flex items-start gap-3">
+        <div className="shrink-0 rounded-xl bg-blue-50 border border-blue-200 p-2">{icon}</div>
         <div>
-          <ImageCarousel images={images} />
+          <h4 className="font-semibold text-blue-800">{title}</h4>
+          <p className="text-sm text-slate-700">{desc}</p>
         </div>
-          <div>
-          <h3 className='hidden md:block lg:hidden m-6 text-xl md:text-3xl lg:text-5xl text-center'>Tahar Garage Door Services in Palmdale & Lancaster</h3>
-            <p className='hidden md:block lg:hidden m-4 md:mr-12 md:ml-12 md:text-2xl'>Tahar Garage Door Services provides excellent customer service specializing in all of your garage door needs. From fixing a minor mishap to installing a completely new garage door, we’ve got you covered! We offer free estimates in a timely manner. We only use high quality materials so it will withstand all seasons, daily use, and remain durable. All materials & labor provided include warranty. Give us a call today! Family owned and operated! Serving the Antelope Valley community since 2015 including: Palmdale, Lancaster, Littlerock, Quartz Hill, Acton, Lake Los Angeles, Rosamond, Mojave and everything in between!</p>
-          </div>
-
-        <div className='custom-homepage-grid-images'>
-          <div className='div-1'>
-            <div className='grid grid-cols-2 m-2 lg:grid-cols-1'>
-              <img className='rounded-xl p-1 object-cover custom-homepage-individual-img lg:h-96' alt='' src={repairMan}
-                onClick={() => {
-                  setModalContent(<OpenLargeImg review={repairMan} />);
-                }}></img>
-              <img className='rounded-xl p-1 object-cover custom-homepage-individual-img lg:h-96' alt='' src={discount1}
-                onClick={() => {
-                  setModalContent(<OpenLargeImg review={discount1} />);
-                }}></img>
-              <img className='rounded-xl p-1 object-cover custom-homepage-individual-img lg:h-96' alt='' src={discount2}
-                onClick={() => {
-                  setModalContent(<OpenLargeImg review={discount2} />);
-                }}></img>
-              <img className='rounded-xl p-1 object-cover custom-homepage-individual-img lg:h-96' alt='' src={repairMan2}
-                onClick={() => {
-                  setModalContent(<OpenLargeImg review={repairMan2} />);
-                }}></img>
-            </div>
-            <div>
-            </div>
-          </div>
-          <div className='div-2'>
-            <h3 className='md:hidden lg:block m-6 text-xl md:text-3xl lg:text-5xl text-center'>Tahar Garage Door Services in Palmdale & Lancaster</h3>
-            <p className='md:hidden lg:block m-4 md:mr-12 md:ml-12 md:text-2xl'>Tahar Garage Door Services provides excellent customer service specializing in all of your garage door needs. From fixing a minor mishap to installing a completely new garage door, we’ve got you covered! We offer free estimates in a timely manner. We only use high quality materials so it will withstand all seasons, daily use, and remain durable. All materials & labor provided include warranty. Give us a call today! Family owned and operated! Serving the Antelope Valley community since 2015 including: Palmdale, Lancaster, Littlerock, Quartz Hill, Acton, Lake Los Angeles, Rosamond, Mojave and everything in between!</p>
-            <div className='flex flex-col md:space-y-4'>
-              <img className='md:mr-2' src={call} alt=''></img>
-              <img className='hidden lg:block mr-2' src={door} alt=''></img>
-              <img className='xl:hidden' src={satisfaction} alt=''></img>
-              <img className='hidden xl:block mr-2' src={satisfaction2} alt=''></img>
-            </div>
-          </div>
-          <div className='div-3 lg:max-h-fit'>
-            <BusinessProfile />
-            <AntelopeValleyMap />
-            <div className=''>
-              <ReviewsApi />
-            </div>
-          </div>
-        </div>
-
       </div>
-
     </div>
   );
-};
 
-export default HomePage;
+  return (
+    <main className="flex flex-col">
+
+      {/* HERO — reduced height ~60%, CTA pill floats over the images */}
+      <section className="relative">
+        <div className="relative h-[14vh] sm:h-[16vh] md:h-[20vh] lg:h-[22vh] overflow-hidden">
+          <ImageCarousel images={heroImages} />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-blue-900/45 via-blue-900/20 to-transparent" />
+        </div>
+
+        {/* Floating CTA pill */}
+        <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 -bottom-5 sm:-bottom-6 w-[min(92vw,880px)]">
+          <div className="pointer-events-auto rounded-xl bg-white/95 backdrop-blur px-4 py-3 md:px-6 md:py-4 shadow">
+            <p className="text-center text-sm md:text-base text-slate-800">
+              Call{" "}
+              <a className="font-semibold text-blue-700 underline underline-offset-2" href="tel:661-202-8255">
+                (661) 202-8255
+              </a>{" "}
+              for help with{" "}
+              <span
+                className={`font-semibold text-blue-800 transition-opacity duration-200 ${
+                  fadeOut ? "opacity-0" : "opacity-100"
+                }`}
+              >
+                {word}
+              </span>
+            </p>
+            <div className="mt-2 flex flex-wrap items-center justify-center gap-2 text-xs">
+              <span className="rounded-full bg-blue-50 text-blue-700 border border-blue-200 px-3 py-1">
+                Same-day service
+              </span>
+              <span className="rounded-full bg-blue-50 text-blue-700 border border-blue-200 px-3 py-1">
+                Licensed & insured
+              </span>
+              <span className="rounded-full bg-blue-50 text-blue-700 border border-blue-200 px-3 py-1">
+                Family-owned since 2015
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Spacer so content clears the floating pill nicely */}
+      <div className="pt-12 sm:pt-14" />
+
+      {/* INTRO */}
+      <section className="section pt-0">
+        <div className="container-pro">
+          <h2 className="text-2xl md:text-3xl font-semibold text-center text-blue-800">
+            Tahar Garage Door Services in Palmdale &amp; Lancaster
+          </h2>
+          <p className="mt-3 text-sm md:text-base text-slate-700 max-w-4xl mx-auto text-center">
+            From quick fixes to full installations, we’ve got you covered. Free estimates, premium
+            materials, and warranties on parts &amp; labor. Proudly serving Palmdale, Lancaster,
+            Littlerock, Quartz Hill, Acton, Lake Los Angeles, Rosamond, Mojave and more.
+          </p>
+        </div>
+      </section>
+
+      {/* VALUE CARDS */}
+      <section className="section pt-0">
+        <div className="container-pro grid gap-4 md:grid-cols-3">
+          <Feature
+            title="Fast & Reliable"
+            desc="Same-day availability in most cases. Clear arrival windows and text updates."
+            icon={<span className="text-xl">⚡</span>}
+          />
+          <Feature
+            title="Quality Parts"
+            desc="Durable springs, tracks, and openers built for long-term use."
+            icon={<span className="text-xl">🛠️</span>}
+          />
+          <Feature
+            title="Honest Pricing"
+            desc="Free estimates, no-pressure recommendations, transparent warranties."
+            icon={<span className="text-xl">✅</span>}
+          />
+        </div>
+      </section>
+
+      {/* SMALL PHOTO MOSAIC */}
+      <section className="section pt-0">
+        <div className="container-pro">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+            {[repairMan, discount1, discount2, repairMan2].map((src, i) => (
+              <button
+                key={i}
+                onClick={() => openImg(src)}
+                className="group rounded-2xl overflow-hidden border border-blue-100 hover:border-blue-200 hover:shadow-md transition"
+              >
+                <img
+                  src={src}
+                  alt=""
+                  className="h-40 w-full object-cover md:h-56 group-active:scale-[0.99] transition-transform"
+                  loading="lazy"
+                />
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PROMO BANNERS */}
+      <section className="section pt-0">
+        <div className="container-pro">
+          <h3 className="text-xl md:text-2xl font-semibold text-blue-800 mb-3">
+            Fast, reliable repairs — done right the first time
+          </h3>
+          <p className="text-sm md:text-base text-slate-700 max-w-3xl">
+            We specialize in springs, openers, tracks, cables, sensors, remotes, and custom doors.
+            Quality parts ensure long-term reliability across seasons and daily use.
+          </p>
+          <a href="tel:661-202-8255" className="btn mt-4 w-fit">
+            Call / Text (661) 202-8255
+          </a>
+
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[call, door, satisfaction].map((src, i) => (
+              <img
+                key={i}
+                src={src}
+                alt=""
+                className="w-full h-48 md:h-56 rounded-2xl object-cover border border-blue-100"
+                loading="lazy"
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* MAP + MOBILE PROFILE + RECENT REVIEWS */}
+      <section className="section pt-0">
+        <div className="container-pro">
+          <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
+            {/* Map spans both columns on md+ */}
+            <div className="card p-2 md:col-span-2">
+              <AntelopeValleyMap />
+            </div>
+
+            {/* Mobile business profile */}
+            <div className="card md:hidden border-blue-100">
+              <BusinessProfile />
+            </div>
+
+            {/* Recent reviews feed */}
+            <div className="card md:col-span-2 border-blue-100">
+              <div className="flex items-center justify-between">
+                <h3 className="text-lg font-semibold text-blue-800">Recent Google Reviews</h3>
+                <a href="/reviews" className="text-sm text-blue-700 hover:underline">
+                  See all
+                </a>
+              </div>
+              <div className="mt-3">
+                <ReviewsApi />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FINAL CTA */}
+      <section className="py-10 md:py-12 bg-gradient-to-r from-blue-600 to-blue-700">
+        <div className="container-pro text-center">
+          <h3 className="text-white text-xl md:text-2xl font-semibold">Need help now? We’re ready.</h3>
+          <p className="text-blue-100 text-sm md:text-base mt-1">
+            Same-day service available across the Antelope Valley.
+          </p>
+          <a href="tel:661-202-8255" className="btn mt-4 bg-white text-blue-700 hover:bg-blue-50">
+            Call / Text (661) 202-8255
+          </a>
+        </div>
+      </section>
+    </main>
+  );
+}

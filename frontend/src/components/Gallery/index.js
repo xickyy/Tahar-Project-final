@@ -1,89 +1,130 @@
-import './Gallery.css';
+import "./Gallery.css";
 
-import image1 from './images/1.jpeg';
-import image2 from './images/2.jpeg';
-import image3 from './images/3.jpeg';
-import image4 from './images/4.jpeg';
-import image5 from './images/5.jpeg';
-import image6 from './images/6.jpeg';
-import image7 from './images/7.jpeg';
-import image8 from './images/8.jpeg';
-import image9 from './images/9.jpeg';
-import image10 from './images/10.jpeg';
-import image11 from './images/11.jpeg';
-import image12 from './images/12.jpeg';
-import image13 from './images/13.jpeg';
-import image14 from './images/14.jpeg';
-import image15 from './images/15.jpeg';
-import image16 from './images/16.jpeg';
-import image17 from './images/17.jpeg';
-import image18 from './images/18.jpeg';
-import image19 from './images/19.jpeg';
-import image20 from './images/20.jpeg';
-import image21 from './images/21.jpeg';
-import image22 from './images/22.jpeg';
-import image23 from './images/23.jpeg';
-import image24 from './images/24.jpeg';
-import image25 from './images/25.jpeg';
-import image26 from './images/26.jpeg';
-import image27 from './images/27.jpeg';
-import image28 from './images/28.jpeg';
-import image29 from './images/29.jpeg';
-import image30 from './images/30.jpeg';
-import image32 from './images/32.jpeg';
-import image38 from './images/38.jpeg';
-import image39 from './images/39.jpeg';
-import image40 from './images/40.jpeg';
-import image41 from './images/41.jpeg';
-import image42 from './images/42.jpeg';
-import image43 from './images/43.jpeg';
-import image44 from './images/44.jpeg';
-import image45 from './images/45.jpeg';
-import image46 from './images/46.jpeg';
-import image47 from './images/47.jpeg';
-import image48 from './images/48.jpeg';
-import image49 from './images/49.jpeg';
-import image50 from './images/50.jpeg';
-import image51 from './images/51.jpeg';
-import image52 from './images/52.jpg';
-import image53 from './images/53.jpg';
-import image54 from './images/54.jpg';
-import image55 from './images/55.jpg';
-import image56 from './images/56.jpg';
+import image1 from "./images/1.jpeg";
+import image2 from "./images/2.jpeg";
+import image3 from "./images/3.jpeg";
+import image4 from "./images/4.jpeg";
+import image5 from "./images/5.jpeg";
+import image6 from "./images/6.jpeg";
+import image7 from "./images/7.jpeg";
+import image8 from "./images/8.jpeg";
+import image9 from "./images/9.jpeg";
+import image10 from "./images/10.jpeg";
+import image11 from "./images/11.jpeg";
+import image12 from "./images/12.jpeg";
+import image13 from "./images/13.jpeg";
+import image14 from "./images/14.jpeg";
+import image15 from "./images/15.jpeg";
+import image16 from "./images/16.jpeg";
+import image17 from "./images/17.jpeg";
+import image18 from "./images/18.jpeg";
+import image19 from "./images/19.jpeg";
+import image20 from "./images/20.jpeg";
+import image21 from "./images/21.jpeg";
+import image22 from "./images/22.jpeg";
+import image23 from "./images/23.jpeg";
+import image24 from "./images/24.jpeg";
+import image25 from "./images/25.jpeg";
+import image26 from "./images/26.jpeg";
+import image27 from "./images/27.jpeg";
+import image28 from "./images/28.jpeg";
+import image29 from "./images/29.jpeg";
+import image30 from "./images/30.jpeg";
+import image32 from "./images/32.jpeg";
+import image38 from "./images/38.jpeg";
+import image39 from "./images/39.jpeg";
+import image40 from "./images/40.jpeg";
+import image41 from "./images/41.jpeg";
+import image42 from "./images/42.jpeg";
+import image43 from "./images/43.jpeg";
+import image44 from "./images/44.jpeg";
+import image45 from "./images/45.jpeg";
+import image46 from "./images/46.jpeg";
+import image47 from "./images/47.jpeg";
+import image48 from "./images/48.jpeg";
+import image49 from "./images/49.jpeg";
+import image50 from "./images/50.jpeg";
+import image51 from "./images/51.jpeg";
+import image52 from "./images/52.jpg";
+import image53 from "./images/53.jpg";
+import image54 from "./images/54.jpg";
+import image55 from "./images/55.jpg";
+import image56 from "./images/56.jpg";
 
+import React, { useMemo, useState } from "react";
+import OpenLargeImg from "../OpenLargeImg";
+import { useModal } from "../../context/Modal";
 
-import OpenLargeImg from '../OpenLargeImg';
-import { useModal } from '../../context/Modal';
-import React from 'react';
+const ALL_IMAGES = [
+  image52, image53, image54, image55, image56,
+  image1, image2, image3, image4, image5, image6, image7, image8, image9, image10,
+  image11, image12, image13, image14, image15, image16, image17, image18, image19, image20,
+  image21, image22, image23, image24, image25, image26, image27, image28, image29, image30,
+  image32, image38, image39, image40, image41, image42, image43, image44, image45, image46,
+  image47, image48, image49, image50, image51,
+];
 
-const Gallery = () => {
+const PAGE_SIZE = 24;
 
+export default function Gallery() {
   const { setModalContent } = useModal();
+  const [visible, setVisible] = useState(PAGE_SIZE);
 
-  let allImages = [image52, image53, image54, image55, image56, image1, image2, image3, image4, image5, image6, image7, image8, image9, image10, image11, image12, image13, image14, image15, image16, image17, image18,
-    image19, image20, image21, image22, image23, image24, image25, image26, image27, image28, image29, image30, image32, image38, image39, image40, image41, image42, image43,
-    image44, image45, image46, image47, image48, image49, image50, image51]
+  const photos = useMemo(() => ALL_IMAGES.slice(0, visible), [visible]);
+
+  const openModal = (src) => setModalContent(<OpenLargeImg review={src} />);
+
+  // derive a simple alt from filename
+  const altFromPath = (p) => {
+    const n = p.split("/").pop()?.split(".")[0] ?? "photo";
+    return `Project photo ${n}`;
+  };
 
   return (
-    <>
+    <section className="gallery-wrap">
+      <div className="container-pro">
+        <header className="text-center mb-6">
+          <h2 className="text-2xl md:text-3xl font-semibold text-blue-800">Gallery</h2>
+          <p className="text-slate-700 mt-2">
+            A few of our repairs and installations across the Antelope Valley.
+          </p>
+          <p className="text-slate-500 text-sm mt-1">{ALL_IMAGES.length} photos</p>
+        </header>
 
-      <h2 className='text-4xl text-center'>Welcome to the Gallery!</h2>
-      <p className='text-center text-xl mx-2'>Here are some images of the damage we have fixed and installs we have done!</p>
+        <div className="gallery-grid">
+          {photos.map((src) => (
+            <button
+              key={src}
+              type="button"
+              className="gallery-card"
+              onClick={() => openModal(src)}
+              onKeyDown={(e) => e.key === "Enter" && openModal(src)}
+              aria-label="Open photo"
+            >
+              <img
+                src={src}
+                alt={altFromPath(src)}
+                className="gallery-img"
+                loading="lazy"
+                decoding="async"
+              />
+              <span className="gallery-overlay">Tap to view</span>
+            </button>
+          ))}
+        </div>
 
-      <div className='flex flex-wrap justify-center'>
-        {
-          allImages.map(image => (
-            <img className='m-1 h-44 w-44 object-cover custom-gallery-image-preview' src={image} alt=''
-              onClick={() => {
-                setModalContent(<OpenLargeImg review={image} />);
-              }}>
-            </img>
-          ))
-        }
+        {visible < ALL_IMAGES.length && (
+          <div className="flex justify-center mt-6">
+            <button
+              type="button"
+              className="btn"
+              onClick={() => setVisible((v) => Math.min(v + PAGE_SIZE, ALL_IMAGES.length))}
+            >
+              Load more photos
+            </button>
+          </div>
+        )}
       </div>
-
-    </>
+    </section>
   );
-};
-
-export default Gallery;
+}

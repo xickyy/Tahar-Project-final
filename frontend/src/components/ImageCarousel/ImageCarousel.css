@@ -1,41 +1,49 @@
-/*
-
-.image-carousel {
-  margin-top: 5px;
-  border-radius: 20px;
-  position: relative;
-  max-width: 100%;
-  max-height: 350px;
-  overflow: hidden;
-  opacity: .9;
-  box-shadow: black 2px 2px 5px 2px;
+/* Make slick fill the parent’s height */
+.image-carousel,
+.image-carousel .slick-slider,
+.image-carousel .slick-list,
+.image-carousel .slick-track {
+  height: 100%;
 }
 
+/* Slick wraps each slide in an extra div */
+.image-carousel .slick-slide > div {
+  height: 100%;
+}
+
+/* Our slide + image should fill and crop gracefully */
 .carousel-image {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 100%;
 }
 
 .carousel-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transition: opacity 1s ease-in-out;
+  object-fit: cover;    /* crop to fill hero without white bars */
+  object-position: center;
+  display: block;
 }
 
-.slick-slide {
-  transition: transform 0.5s ease-in-out;
-} */
-
-.image-carousel {
-  width: 100%
+/* Remove slick's default extra bottom margin from dotted sliders */
+.slick-dotted.slick-slider {
+  margin-bottom: 0;
 }
 
-button.slick-arrow.slick-next {
-  display: none;
-  margin-right: 40px;
-  background-color: black;
-  border-radius: 20px;
+/* Dots overlayed inside the hero (no extra space) */
+.image-carousel .custom-dots {
+  position: absolute;
+  bottom: 12px; /* adjust if needed */
+  left: 0;
+  right: 0;
+}
+
+.image-carousel .custom-dots li button:before {
+  font-size: 10px;
+  color: #fff;
+  opacity: 0.5;
+}
+
+.image-carousel .custom-dots li.slick-active button:before {
+  opacity: 1;
+  color: #fff;
 }

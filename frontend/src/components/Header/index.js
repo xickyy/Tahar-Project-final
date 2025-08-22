@@ -1,157 +1,155 @@
-import './Header.css';
-import image from './TAHAR.png';
-import { Link } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
-import '../../dist/output.css';
+import "./Header.css";
+import image from "./TAHAR.png";
+import React, { useEffect, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 
-const Header = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+const LINKS = [
+  { to: "/about", label: "About" },
+  { to: "/reviews", label: "Reviews" },
+  { to: "/services", label: "Services" },
+  { to: "/gallery", label: "Gallery" },
+  { to: "/faq", label: "FAQ" },
+  //{ to: "/contact", label: "Contact" },
+];
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+export default function Header() {
+  const [open, setOpen] = useState(false);
 
-  // Close the mobile menu when the screen size changes to desktop
-  const handleResize = () => {
-    if (window.innerWidth >= 768) {
-      setIsMobileMenuOpen(false);
-    }
-  };
-
-  // Add a resize event listener to handle the screen size change
   useEffect(() => {
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
+    const onResize = () => {
+      if (window.innerWidth >= 768) setOpen(false);
     };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
   }, []);
 
+  useEffect(() => {
+    const onKey = (e) => e.key === "Escape" && setOpen(false);
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  const navLinkClasses = ({ isActive }) =>
+    [
+      "px-2 py-1 rounded-md transition-colors",
+      isActive ? "text-white bg-white/10" : "text-white/90 hover:text-white",
+    ].join(" ");
 
   return (
-    <header className="bg-blue-900 text-white">
-      <div className="mx-2 flex items-center justify-between">
-        <Link to="/">
-          <img className="w-32  md:mt-5 rounded-full border-2 border-black mb-2 mt-2" src={image} alt="LOGO" />
-        </Link>
+    <header className="sticky top-0 z-50 text-white">
+      {/* Topbar */}
+      <div className="bg-blue-950 text-xs">
+        <div className="mx-auto max-w-7xl px-4 py-2 flex items-center justify-between">
+          <span className="opacity-90">24/7 Garage Door Service • Free Estimates</span>
+          <a
+            href="tel:661-202-8255"
+            className="underline underline-offset-2 hover:opacity-100 opacity-90"
+          >
+            Call 661-202-8255
+          </a>
+        </div>
+      </div>
 
-        <div>
-            <p className='text-lg xl:text-6xl lg:text-4xl md:text-2xl text-center tahar-header-text mb-4'>Tahar Garage Door Services</p>
+      {/* Main bar */}
+      <div className="bg-blue-900/95 backdrop-blur header-shadow">
+        <div className="mx-auto max-w-7xl px-4">
+          {/* Mobile uses 3-col grid to center title; desktop reverts to flex w/ links next to brand */}
+          <div className="h-20 grid grid-cols-[auto,1fr,auto] items-center gap-4 md:flex md:items-center md:justify-between">
+            {/* Left: brand */}
+            <div className="flex items-center gap-3 min-w-0">
+              {/* Brand */}
+              <Link to="/" className="flex items-center gap-3 justify-self-start min-w-0">
+                <div className="h-12 w-12 md:h-14 md:w-14 shrink-0 rounded-full ring-2 ring-white/20 header-logo-shadow overflow-hidden bg-white/95 flex items-center justify-center">
+                  <img
+                    src={image}
+                    alt="Tahar Logo"
+                    className="h-full w-full object-contain"
+                  />
+                </div>
 
-          <div className="custom-call-header-scrolly md:hidden">
-            <a
-              className="w-48 mr-2 ml-2 mb-2 bg-red-600 hover:bg-green-600 text-white py-1 px-4 rounded-3xl inline-block text-center"
-              href="tel:661-202-8255"
-            >
-              Call/Text For A Free Quote! 661-202-8255
-            </a>
+                {/* Desktop title */}
+                <span className="hidden md:block font-semibold tracking-tight text-lg md:text-xl lg:text-2xl">
+                  Tahar Garage Door Services
+                </span>
+              </Link>
+
+
+              {/* Desktop nav links (left-aligned, shows on md+) */}
+              <nav className="hidden md:flex items-center gap-6 ml-6">
+                {LINKS.map((l) => (
+                  <NavLink key={l.to} to={l.to} className={navLinkClasses}>
+                    {l.label}
+                  </NavLink>
+                ))}
+              </nav>
+            </div>
+
+            {/* Center: mobile-only single-line centered title */}
+            <div className="md:hidden justify-self-center text-center px-2">
+              <Link to="/" className="block">
+                <span className="font-semibold tracking-tight text-xl leading-tight whitespace-nowrap truncate max-w-[62vw]">
+                  Tahar Garage Door Services
+                </span>
+              </Link>
+            </div>
+
+            {/* Right: CTA on desktop • Menu on mobile */}
+            <div className="flex items-center gap-3 justify-self-end">
+              <a
+                href="tel:661-202-8255"
+                className="hidden md:inline-flex items-center rounded-xl bg-white text-blue-700 px-4 py-2 text-sm font-medium hover:bg-blue-50 transition"
+              >
+                Call / Text 661-202-8255
+              </a>
+              <button
+                type="button"
+                className="md:hidden inline-flex items-center rounded-lg bg-white/10 px-3 py-2 text-sm hover:bg-white/20 transition"
+                aria-expanded={open}
+                aria-controls="mobile-menu"
+                onClick={() => setOpen((s) => !s)}
+              >
+                {open ? "Close" : "Menu"}
+              </button>
+            </div>
           </div>
         </div>
 
-
-        <div className="hidden md:flex justify-between py-4 text-center">
-          <a
-            className="w-32 mr-4 ml-2 mb-2 md:my-0 bg-red-600 hover:bg-green-600 text-white py-2 px-4 rounded-lg inline-block"
-            href="tel:661-202-8255"
-          >
-            Call/Text For A Free Quote! 661-202-8255
-          </a>
+        {/* Mobile menu (slide-down) */}
+        <div id="mobile-menu" className={`md:hidden mobile-menu ${open ? "open" : ""}`}>
+          <div className="mx-auto max-w-7xl px-4 pb-4">
+            <div className="grid gap-2 pt-2">
+              {LINKS.map((l) => (
+                <NavLink
+                  key={l.to}
+                  to={l.to}
+                  className={({ isActive }) =>
+                    [
+                      "block rounded-lg px-4 py-2 text-sm transition-colors",
+                      isActive
+                        ? "bg-white text-blue-700"
+                        : "bg-white/10 text-white hover:bg-white/20",
+                    ].join(" ")
+                  }
+                  onClick={() => setOpen(false)}
+                >
+                  {l.label}
+                </NavLink>
+              ))}
+              <a
+                href="tel:661-202-8255"
+                className="mt-2 inline-flex items-center justify-center rounded-xl bg-white text-blue-700 px-4 py-2 text-sm font-medium hover:bg-blue-50 transition"
+                onClick={() => setOpen(false)}
+              >
+                Call / Text 661-202-8255
+              </a>
+            </div>
+          </div>
         </div>
-        {/* Show the button only on screens the size of a mobile device */}
-        <button
-          className="md:hidden bg-blue-500 hover:bg-blue-600 h-14 mt-9 text-white px-2 py-1 rounded-lg toggle-button"
-          onClick={toggleMobileMenu}
-        >
-          {isMobileMenuOpen ? 'Close' : 'Menu'}
-        </button>
       </div>
-
-      {/* Show the mobile menu on screens the size of a mobile device */}
-      {isMobileMenuOpen && (
-        <div className=" bg-blue-400 container mx-auto py-4 text-center custom-menu-slide">
-          <ul className="space-y-2">
-            <li>
-              <Link
-                className="hover:text-blue-300"
-                to="/about"
-                onClick={toggleMobileMenu}
-              >
-                About Us
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="hover:text-blue-300"
-                to="/reviews"
-                onClick={toggleMobileMenu}
-              >
-                Reviews
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="hover:text-blue-300"
-                to="/services"
-                onClick={toggleMobileMenu}
-              >
-                Services
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="hover:text-blue-300"
-                to="/gallery"
-                onClick={toggleMobileMenu}
-              >
-                Gallery
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="hover:text-blue-300"
-                to="/faq"
-                onClick={toggleMobileMenu}
-              >
-                FAQ
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="hover:text-blue-300"
-                to="/contact"
-                onClick={toggleMobileMenu}
-              >
-                Contact
-              </Link>
-            </li>
-          </ul>
-        </div>
-      )}
-
-      <nav className="hidden md:block space-x-4 text-center">
-        <Link className="hover:text-blue-300 custom-nav-css" to="/about">
-          About Us
-        </Link>
-        <Link className="hover:text-blue-300 custom-nav-css" to="/reviews">
-          Reviews
-        </Link>
-        <Link className="hover:text-blue-300 custom-nav-css" to="/services">
-          Services
-        </Link>
-        <Link className="hover:text-blue-300 custom-nav-css" to="/gallery">
-          Gallery
-        </Link>
-        <Link className="hover:text-blue-300 custom-nav-css" to="/faq">
-          FAQ
-        </Link>
-        <Link className="hover:text-blue-300 custom-nav-css" to="/contact">
-          Contact
-        </Link>
-      </nav>
-
-
-
     </header>
   );
-};
-
-export default Header;
+}

@@ -119,26 +119,4 @@
   }
 } */
 
-@media screen and (min-width: 1024px) {
-  .custom-homepage-grid-images {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-  }
-}
 
-@media screen and (min-width: 1284px) {
-  .custom-homepage-grid-images {
-    display: grid;
-    grid-template-columns: .8fr 2fr 1fr;
-  }
-}
-
-.custom-homepage-individual-img {
-  box-shadow: black 0px 0px 7px 2px;
-  margin-bottom: 5px;
-}
-
-.custom-homepage-individual-img:hover {
-  box-shadow: blue 0px 0px 5px 2px;
-  cursor: pointer;
-}

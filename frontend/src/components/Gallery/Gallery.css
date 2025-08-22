@@ -1,9 +1,79 @@
-.custom-gallery-image-preview:hover {
-  cursor: pointer;
-  box-shadow: rgb(0, 47, 255) 0px 0px 4px 3px;
+/* Wrapper uses your site spacing system (container-pro comes from your revamp) */
+.gallery-wrap { padding-top: 0.25rem; }
+
+/* Responsive grid: fills the row with nice square tiles */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
 }
 
-.custom-gallery-image-preview {
-  box-shadow: black 2px 2px 3px 2px;
-  border-radius: 5px;
+@media (min-width: 640px) {
+  .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+}
+@media (min-width: 1024px) {
+  .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+}
+
+/* Card with hover lift and focus ring */
+.gallery-card {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(59,130,246,0.18); /* blue-500 alpha */
+  background: #fff;
+  padding: 0;           /* reset button padding */
+  cursor: zoom-in;
+  box-shadow: 0 3px 10px rgba(2,6,23,0.08);
+  transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
+}
+.gallery-card:hover,
+.gallery-card:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(59,130,246,0.35);
+  box-shadow: 0 10px 24px rgba(2,6,23,0.12);
+  outline: none;
+}
+
+/* Square crop previews */
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;   /* square tiles */
+  object-fit: cover;
+  display: block;
+}
+
+/* Subtle overlay prompt */
+.gallery-overlay {
+  position: absolute;
+  inset: auto 8px 8px auto;
+  background: rgba(11,59,143,0.9); /* blue-900 */
+  color: #e5edff;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 9999px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: all 140ms ease;
+  pointer-events: none;
+}
+.gallery-card:hover .gallery-overlay,
+.gallery-card:focus-visible .gallery-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Primary button (matches your revamp buttons) */
+.btn {
+  background: #ffffff;
+  color: #1e40af; /* blue-800 */
+  border: 1px solid rgba(30,64,175,0.25);
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 160ms ease;
+}
+.btn:hover {
+  background: #f1f5f9; /* slate-100 */
 }

@@ -1,52 +1,133 @@
-import './TracksPage.css';
-import track from "./12.jpeg"
+import "./TracksPage.css";
+import React from "react";
 
-function TracksPage() {
+import track from "./12.jpeg";
+
+const PHONE = "(661) 202-8255";
+const TEL = "tel:661-202-8255";
+
+const POINTS = [
+  {
+    title: "Track types & purpose",
+    text:
+      "Garage doors ride on vertical and horizontal tracks. Proper sizing and alignment keep the door moving safely and smoothly through its travel.",
+  },
+  {
+    title: "Alignment & level",
+    text:
+      "Even a small twist or bow can cause rubbing, binding, or rollers to jump the track. We square the hardware, plumb the verticals, and level the horizontals.",
+  },
+  {
+    title: "Rollers & hinges",
+    text:
+      "Worn rollers or loose hinges stress the track and create noise. We replace damaged parts and set correct hinge offsets for quiet operation.",
+  },
+  {
+    title: "Bent or damaged sections",
+    text:
+      "Impacts, fatigue, or fasteners pulling out can bend rails. We straighten when safe—or replace sections—then re-secure with proper hardware.",
+  },
+  {
+    title: "Quiet upgrades",
+    text:
+      "Nylon rollers, fresh bearings, and correct spacing reduce friction and squeaks. We lube-and-tune to keep things gliding.",
+  },
+  {
+    title: "Safety & balance",
+    text:
+      "We verify spring balance, cable condition, and safety reversal so the door isn’t forcing itself through a misaligned track.",
+  },
+  {
+    title: "Preventive maintenance",
+    text:
+      "Cleaning, lubrication, and fastener checks prevent early wear and keep the door from drifting out of alignment.",
+  },
+];
+
+export default function TracksPage() {
   return (
-    <div>
-      <div className='p-2 md:hidden'>
-        <img className='border border-black' src={track}></img>
-      </div>
-      <h2 className='text-center font-bold text-2xl mb-4 underline'>Garage Door Tracks</h2>
-      <div className='text-center m-2'>
-        <p>Welcome to Tahar Garage Door Services, your premier destination for expert garage door track repairs and installations. Our team specializes in seamlessly addressing all your garage door track needs, ensuring smooth functionality every time.
+    <section className="trk-wrap">
+      {/* Banner
+      <figure className="trk-hero">
+        <img
+          src={track}
+          alt="Garage door track alignment banner"
+          className="trk-hero__img"
+          loading="eager"
+          decoding="async"
+        />
+      </figure>
+      */}
 
-          From simple realignments to complete track replacements, we've got you covered. We understand the nuances of garage door systems, and we always recommend seeking professional assistance rather than attempting DIY fixes. Garage doors are not only heavy but also intricate mechanisms, and mishandling them can lead to serious injuries. Trust our skilled technicians to handle the job safely and efficiently.
+      <div className="container-pro">
+        {/* Title card */}
+        <div className="trk-headcard" role="region" aria-label="Tracks & Rollers">
+          <h1 className="trk-headcard__title">Tracks &amp; Rollers</h1>
+          <p className="trk-headcard__sub">
+            Same-day availability • Licensed &amp; insured • Family-owned since 2015
+          </p>
+          <div className="trk-headcard__cta">
+            <a href={TEL} className="btn btn--primary">Call / Text {PHONE}</a>
+          </div>
+        </div>
 
-          Contact Tahar Garage Door Services today for reliable solutions that prioritize both your safety and the optimal performance of your garage door. Below you can find some additional information about Garage door tracks.</p>
+        {/* Content grid */}
+        <div className="trk-grid">
+          {/* Left column: benefits / info */}
+          <div className="trk-col">
+            <p className="trk-intro">
+              Door rubbing, popping rollers, or a section that looks crooked? Tracks keep
+              everything guided and square. We straighten, realign, replace damaged sections,
+              swap worn rollers, and tune the system so your door runs smooth and safe.
+            </p>
+
+            <div className="trk-cards">
+              {POINTS.map((p, i) => (
+                <article key={i} className="trk-card">
+                  <h3 className="trk-card__title">{p.title}</h3>
+                  <p className="trk-card__text">{p.text}</p>
+                </article>
+              ))}
+            </div>
+
+            <div className="trk-bottom-cta">
+              <p className="trk-bottom-cta__text">
+                DIY track fixes can be risky—doors are heavy and under tension. We’re happy to help.
+              </p>
+              <a href={TEL} className="btn">Call / Text {PHONE}</a>
+            </div>
+          </div>
+
+          {/* Right column: sticky aside */}
+          <aside className="trk-aside">
+            <div className="trk-aside__card">
+              <img
+                src={track}
+                alt="Close-up of garage door track and rollers"
+                className="trk-aside__img"
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="trk-aside__body">
+                <h4 className="trk-aside__title">Common track symptoms</h4>
+                <ul className="trk-aside__list">
+                  <li>Door rubs, scrapes, or squeals</li>
+                  <li>Rollers pop out or bind in corners</li>
+                  <li>Door travels uneven or looks racked</li>
+                  <li>Bent/dented track sections</li>
+                  <li>Fasteners pulling out of framing</li>
+                </ul>
+                <a href={TEL} className="btn btn--full">Call / Text {PHONE}</a>
+                <div className="trk-badges">
+                  <span className="chip">Same-day service</span>
+                  <span className="chip">Licensed &amp; insured</span>
+                  <span className="chip">Safety-checked</span>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
       </div>
-      <div className='tips-list-el'>
-        <p className='font-bold mr-2 whitespace-nowrap border border-black custom-tips-title border-b-0 md:mb-2 md:border-b'>Types:</p>
-        <p className='flex border border-black mb-2 ml-2 mr-2 p-2 custom-tips-info'>There are generally two types of garage door tracks: vertical tracks and horizontal tracks. Vertical tracks run vertically along the sides of the door opening, while horizontal tracks are installed parallel to the ceiling of the garage.</p>
-      </div>
-      <div className='tips-list-el'>
-        <p className='font-bold mr-2 whitespace-nowrap border border-black custom-tips-title border-b-0 md:mb-2 md:border-b'>Components:</p>
-        <p className='flex border border-black mb-2 ml-2 mr-2 p-2 custom-tips-info'>Each track consists of several components, including track sections, brackets, and rollers. The track sections are typically curved to guide the door along its path, and the brackets are used to secure the tracks to the walls and ceiling of the garage.</p>
-      </div>
-      <div className='tips-list-el'>
-        <p className='font-bold mr-2 whitespace-nowrap border border-black custom-tips-title border-b-0 md:mb-2 md:border-b'>Installation:</p>
-        <p className='flex border border-black mb-2 ml-2 mr-2 p-2 custom-tips-info'>Proper installation of garage door tracks is crucial for the smooth operation of the door. Tracks must be securely attached to the walls and ceiling using appropriate fasteners. Additionally, the tracks must be aligned correctly to ensure that the door moves smoothly without binding or rubbing against the tracks.</p>
-      </div>
-      <div className='tips-list-el'>
-        <p className='font-bold mr-2 whitespace-nowrap border border-black custom-tips-title border-b-0 md:mb-2 md:border-b'>Maintenance:</p>
-        <p className='flex border border-black mb-2 ml-2 mr-2 p-2 custom-tips-info'>Regular maintenance of garage door tracks is important to keep the door operating smoothly and safely. This includes cleaning the tracks to remove dirt and debris, lubricating the rollers and track surfaces, and checking for any signs of wear or damage.</p>
-      </div>
-      <div className='tips-list-el'>
-        <p className='font-bold mr-2 whitespace-nowrap border border-black custom-tips-title border-b-0 md:mb-2 md:border-b'>Safety:</p>
-        <p className='flex border border-black mb-2 ml-2 mr-2 p-2 custom-tips-info'>Garage door tracks play a significant role in the safe operation of the door. It's essential to ensure that the tracks are in good condition and properly aligned to prevent accidents or injuries.</p>
-      </div>
-      <div className='tips-list-el'>
-        <p className='font-bold mr-2 whitespace-nowrap border border-black custom-tips-title border-b-0 md:mb-2 md:border-b'>Clean Tracks:</p>
-        <p className='flex border border-black mb-2 ml-2 mr-2 p-2 custom-tips-info'>Regularly clean the tracks to remove any dirt, debris, or obstructions that could affect the smooth movement of the door. Use a damp cloth or brush to wipe away buildup.</p>
-      </div>
-      <div className='tips-list-el'>
-        <p className='font-bold mr-2 whitespace-nowrap border border-black custom-tips-title border-b-0 md:mb-2 md:border-b'>Repairs:</p>
-        <p className='flex border border-black mb-2 ml-2 mr-2 p-2 custom-tips-info'>Over time, garage door tracks may become damaged or bent, which can affect the operation of the door. In such cases, repairs may be necessary, such as straightening bent tracks or replacing damaged sections.</p>
-      </div>
-      <p className='text-center text-xl mb-6 mt-4 ml-2 mr-2'>Overall, garage door tracks are a critical component of the garage door system, and proper installation, maintenance, and repairs are essential for smooth and safe operation.</p>
-    </div>
+    </section>
   );
-};
-
-
-export default TracksPage;
+}

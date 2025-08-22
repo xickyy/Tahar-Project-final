@@ -1,141 +1,22 @@
-/* .header-container {
-  display: flex;
-  flex-direction: row;
-  margin-top: -10px;
-  margin-left: -10px;
-  margin-right: -10px;
-  background: rgb(52,49,255);
-  background: linear-gradient(90deg, rgba(52,49,255,1) 0%, rgba(75,75,181,1) 31%, rgba(232,234,251,1) 100%);
+/* Subtle drop shadow for the sticky header */
+.header-shadow {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
-.header-icon {
-  max-width: 150px;
-  max-height: 150px;
-  border-radius: 50%;
-  margin-top: 10px;
-  margin-left: 10px;
+/* Extra depth on the circular logo */
+.header-logo-shadow {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
 }
 
-.header-link {
-  font-size: 20px;
-  padding-left: 7px;
-  padding-right: 7px;
-  text-decoration: none;
-  transition: 0.5s;
-  color: rgb(0, 0, 0);
+/* Mobile menu slide-down animation */
+.mobile-menu {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 260ms ease, opacity 220ms ease;
 }
 
-.header-title {
-  font-size: 40px;
+.mobile-menu.open {
+  max-height: 420px; /* enough for links; adjust if you add more */
+  opacity: 1;
 }
-
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: black solid 1px;
-}
-
-.header-link-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.header-call-button-container {
-  background-color: rgba(255, 0, 0, 0.801);
-  height: 100px;
-  width: 160px;
-  border-radius: 20px;
-  text-align: center;
-  margin-top: 1em;
-  margin-right: 1em;
-  box-shadow: rgb(83, 82, 82) 6px 6px 8px 1px;
-  color: rgba(255, 0, 0, 0);
-  transition: 1s;
-  text-decoration: none;
-  padding: 5px;
-}
-
-.header-call-button {
-  color: rgb(0, 0, 0);
-  font-size: 25px;
-  transition: 1s;
-}
-
-.header-call-button:hover {
-  color: rgb(0, 0, 0);
-}
-
-.header-quote-link {
-  font-size: 25px;
-  text-decoration: none;
-  color: rgb(255, 255, 255);
-  height: 100%;
-  transition: 1s;
-}
-
-.header-quote-link:hover {
-  color: rgb(0, 255, 0);
-}
-
-
-.header-link:hover {
-  padding-left: 15px;
-  padding-right: 15px;
-  font-size: 21px;
-  font-weight: bold;
-  color: rgb(8, 205, 231);
-}
-
-
-.header-call-button-container:hover {
-  box-shadow: rgb(1, 81, 255) 1px 1px 15px 2px;
-  color: green;
-} */
-
-.custom-nav-css {
-  transition: .5s;
-}
-
-.custom-nav-css:hover {
-  padding: 10px;
-  bottom: 10px;
-}
-
-
-.custom-menu-slide {
-  position: absolute;
-  left: -100%; /* Start off-screen to the left */
-  width: 100%;
-  background-color: #3498db; /* Change this to your desired background color */
-  color: #fff; /* Change this to your desired text color */
-  padding: 20px;
-  animation: slideIn 1s forwards; /* Animation definition */
-  z-index: 20;
-}
-
-@keyframes slideIn {
-  to {
-      left: 0; /* Slide to the left edge of the screen */
-  }
-}
-
-@keyframes slideOut {
-  to {
-      left: -100%; /* Slide to the left edge of the screen */
-  }
-}
-
-
-/*title outline css not working quite like i want it to
-
-/* .tahar-header-text {
-  -webkit-text-stroke: 1px black;
-   color: white;
-   text-shadow:
-       3px 3px 0 #000,
-     -1px -1px 0 #000,
-      1px -1px 0 #000,
-      -1px 1px 0 #000,
-       1px 1px 0 #000;
-} */

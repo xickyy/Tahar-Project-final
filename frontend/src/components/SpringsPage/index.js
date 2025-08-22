@@ -1,59 +1,130 @@
-import './SpringsPage.css';
-import springs from "../Gallery/images/22.jpeg"
-import springsHead from "./2.jpeg"
+import "./SpringsPage.css";
+import React from "react";
 
-function SpringsPage() {
+import springs from "../Gallery/images/22.jpeg";
+import springsHead from "./2.jpeg";
+
+const PHONE = "(661) 202-8255";
+const TEL = "tel:661-202-8255";
+
+const POINTS = [
+  {
+    title: "Reliable & durable springs",
+    text:
+      "We use high-quality torsion/extension springs designed for daily use, balanced for your door’s weight, and built for long-term performance.",
+  },
+  {
+    title: "Balanced door operation",
+    text:
+      "Properly calibrated springs counterbalance the door so it opens smoothly and reduces strain on your opener—extending its lifespan.",
+  },
+  {
+    title: "Expert replacement & repair",
+    text:
+      "Broken spring? Door won’t open? We replace and set spring tension correctly, test balance, and verify safe operation before we leave.",
+  },
+  {
+    title: "Customized for your door",
+    text:
+      "Every door is different. We size and pair springs to your exact door weight and setup for the safest, best-performing result.",
+  },
+  {
+    title: "Safety first",
+    text:
+      "Springs are under high tension. Our technicians follow strict safety practices and manufacturer procedures on every job.",
+  },
+  {
+    title: "Preventive maintenance",
+    text:
+      "Keep things running quietly with periodic balance checks and lubrication. We offer maintenance to catch issues early.",
+  },
+  {
+    title: "Emergency availability",
+    text:
+      "A broken spring can derail your day. We offer 24/7 service to get your garage door working again as quickly as possible.",
+  },
+];
+
+export default function SpringsPage() {
   return (
-    <div>
-      <img className='border border-black md:hidden' src={springsHead}></img>
+    <section className="spr-wrap">
+      {/* Banner image */}
+      <figure className="spr-hero">
+        <img
+          src={springsHead}
+          alt="Garage door spring replacement banner"
+          className="spr-hero__img"
+          loading="eager"
+          decoding="async"
+        />
+      </figure>
 
-      <h2 className='text-center font-bold text-2xl mb-4 underline'>Springs</h2>
+      <div className="container-pro">
+        {/* Title card */}
+        <div className="spr-headcard" role="region" aria-label="Spring Repair & Replacement">
+          <h1 className="spr-headcard__title">Spring Repair &amp; Replacement</h1>
+          <p className="spr-headcard__sub">
+            Same-day availability • Licensed &amp; insured • Family-owned since 2015
+          </p>
+          <div className="spr-headcard__cta">
+            <a href={TEL} className="btn btn--primary">Call / Text {PHONE}</a>
+          </div>
+        </div>
 
+        {/* Content grid */}
+        <div className="spr-grid">
+          {/* Left: benefits / info */}
+          <div className="spr-col">
+            <p className="spr-intro">
+              If your door won’t lift, looks uneven, or you see a gap in the torsion spring, it’s time to replace it.
+              Our technicians size, install, and balance springs correctly so your door runs smoothly and safely.
+            </p>
 
-      <div className='text-center m-2'>
-        <p className="ml-2 mr-2 mb-4 text-lg" >Focusing on garage door springs, here's how Tahar Garage Door Services can assist you:</p>
-      </div>
+            <div className="spr-cards">
+              {POINTS.map((p, i) => (
+                <article key={i} className="spr-card">
+                  <h3 className="spr-card__title">{p.title}</h3>
+                  <p className="spr-card__text">{p.text}</p>
+                </article>
+              ))}
+            </div>
 
-      <div className='tips-list-el'>
-        <p className='font-bold mr-2 whitespace-nowrap border border-black custom-tips-title border-b-0 md:mb-2 md:border-b'>Reliable and Durable Springs:</p>
-        <p className='flex border border-black mb-2 ml-2 mr-2 p-2 custom-tips-info'>At Tahar Garage Door Services, we understand the importance of high-quality garage door springs. Our springs are built to withstand the rigors of daily use, providing reliable performance and long-lasting durability.</p>
-      </div>
-      <div className='tips-list-el'>
-        <p className='font-bold mr-2 whitespace-nowrap border border-black custom-tips-title border-b-0 md:mb-2 md:border-b'>Balanced Door Operation:</p>
-        <p className='flex border border-black mb-2 ml-2 mr-2 p-2 custom-tips-info'>Garage door springs are responsible for counterbalancing the weight of the door, making it easy to open and close smoothly. Our expertly calibrated springs ensure that your door operates with optimal balance, reducing strain on the opener and prolonging its lifespan.</p>
-      </div>
-      <div className='tips-list-el'>
-        <p className='font-bold mr-2 whitespace-nowrap border border-black custom-tips-title border-b-0 md:mb-2 md:border-b'>Expert Spring Replacement and Repair:</p>
-        <p className='flex border border-black mb-2 ml-2 mr-2 p-2 custom-tips-info'>Over time, garage door springs may wear out or break, causing your door to become unbalanced or inoperable. Our experienced technicians are equipped to handle spring replacement and repair quickly and efficiently, restoring your door's functionality and safety.</p>
-      </div>
-      <div className='tips-list-el'>
-        <p className='font-bold mr-2 whitespace-nowrap border border-black custom-tips-title border-b-0 md:mb-2 md:border-b'>Customized Spring Solutions:</p>
-        <p className='flex border border-black mb-2 ml-2 mr-2 p-2 custom-tips-info'>Every garage door is unique, and our team at Tahar Garage Door Services understands that one size does not fit all. We offer customized spring solutions tailored to your door's specifications, ensuring a perfect fit and optimal performance.</p>
-      </div>
-      <div className='tips-list-el'>
-        <p className='font-bold mr-2 whitespace-nowrap border border-black custom-tips-title border-b-0 md:mb-2 md:border-b'>Safety First Approach:</p>
-        <p className='flex border border-black mb-2 ml-2 mr-2 p-2 custom-tips-info'>Garage door springs are under high tension and can be dangerous to work with if not handled properly. Our technicians prioritize safety at every step of the process, using industry best practices and safety protocols to minimize risks and ensure a safe working environment.</p>
-      </div>
-      <div className='tips-list-el'>
-        <p className='font-bold mr-2 whitespace-nowrap border border-black custom-tips-title border-b-0 md:mb-2 md:border-b'>Preventive Maintenance:</p>
-        <p className='flex border border-black mb-2 ml-2 mr-2 p-2 custom-tips-info'>Regular maintenance is key to prolonging the life of your garage door springs and preventing unexpected breakdowns. Tahar Garage Door Services offers comprehensive maintenance plans to keep your springs in top condition, saving you time, money, and headaches in the long run.</p>
-      </div>
-      <div className='tips-list-el'>
-        <p className='font-bold mr-2 whitespace-nowrap border border-black custom-tips-title border-b-0 md:mb-2 md:border-b'>Emergency Spring Services:</p>
-        <p className='flex border border-black mb-2 ml-2 mr-2 p-2 custom-tips-info'>A broken garage door spring can bring your daily routine to a halt. That's why we offer emergency spring repair services, available 24/7, to address urgent issues and get your door back up and running as quickly as possible.</p>
-      </div>
+            <div className="spr-bottom-cta">
+              <p className="spr-bottom-cta__text">
+                Not sure which spring you have? No problem—send us a photo or give us a quick call. We’ll walk you through it.
+              </p>
+              <a href={TEL} className="btn">Call / Text {PHONE}</a>
+            </div>
+          </div>
 
-      <div>
-        <p className="ml-4 mr-4 mb-4 text-lg text-center">Trust Tahar Garage Door Services for all your garage door spring needs. Our commitment to quality, reliability, and customer satisfaction sets us apart as your premier choice for garage door services. Contact us today to schedule an appointment or learn more about how we can help you keep your garage door operating smoothly and safely.</p>
+          {/* Right: sticky aside (desktop) */}
+          <aside className="spr-aside">
+            <div className="spr-aside__card">
+              <img
+                src={springs}
+                alt="Close-up of new garage door springs"
+                className="spr-aside__img"
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="spr-aside__body">
+                <h4 className="spr-aside__title">Have a broken spring?</h4>
+                <ul className="spr-aside__list">
+                  <li>Door won’t open or is very heavy</li>
+                  <li>Gap in the spring coil</li>
+                  <li>Loud bang from the garage</li>
+                </ul>
+                <a href={TEL} className="btn btn--full">Call / Text {PHONE}</a>
+                <div className="spr-badges">
+                  <span className="chip">Same-day service</span>
+                  <span className="chip">Licensed &amp; insured</span>
+                  <span className="chip">Safety-checked</span>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
       </div>
-
-      <div className='p-2 md:hidden'>
-        <img className='border border-black' src={springs}></img>
-      </div>
-
-    </div>
+    </section>
   );
-};
-
-
-export default SpringsPage;
+}

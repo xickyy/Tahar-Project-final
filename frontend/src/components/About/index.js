@@ -1,40 +1,124 @@
-import './About.css';
+import "./About.css";
+import React from "react";
+import door from "./door.jpeg";
 
-import door from './door.jpeg';
+const PHONE = "(661) 202-8255";
+const TEL = "tel:661-202-8255";
 
+const VALUES = [
+  {
+    title: "Craftsmanship",
+    text:
+      "We install the right parts, balance every door, and test thoroughly so it runs smoothly and safely.",
+  },
+  {
+    title: "Reliability",
+    text:
+      "Same-day availability when possible, on-time arrivals, and work that stands up to daily use.",
+  },
+  {
+    title: "Transparency",
+    text:
+      "Clear estimates before we start, options explained in plain language, and no surprise charges.",
+  },
+  {
+    title: "Safety",
+    text:
+      "We follow manufacturer specs and best practices—springs, cables, and sensors are always set and tested correctly.",
+  },
+];
 
-const About = () => {
+const AREAS = [
+  "Palmdale", "Lancaster", "Quartz Hill", "Rancho Vista", "Sun Village",
+  "Littlerock", "Lake Los Angeles", "Acton", "Leona Valley",
+  "Lake Hughes", "Lakeview", "Elizabeth Lake", "Pearblossom",
+  "Rosamond", "Mojave", "Santa Clarita", "Del Sur"
+];
+
+export default function About() {
   return (
-    <div>
-      <h2 className='text-center text-2xl text-black-900 underline mb-6 mt-4'>About Tahar Garage Door Services</h2>
-      <div className='about-custom-container'>
-        <p className='p-2 text-lg'>Tahar Garage Door Services provides excellent customer service, specializing in all of your garage door service Cneeds. We’ve got you covered from fixing a
-          minor mishap to installing a completely new garage door! We offer free estimates in a timely manner. We only use high-quality materials so they will withstand all seasons, daily use,
-          and remain durable. All materials and labor provided include a warranty. Give us a call today! Family-owned and operated!
-          Garage door repair in Lancaster California
-          Garage door repair in Rosamond California
-          Garage door repair in Quartz Hill California
-          Garage door repair in Mojave California
-          Garage door repair in Littlerock California
-          Garage door repair in Acton California
-          Garage door repair in Santa Clarita California
-          Garage door repair in Lake Hughes California
-          Garage door repair in Leona Valley California
-          Garage door repair in Rancho Vista California
-          Garage door repair in Sun Village California
-          Garage door repair in Lakeview California
-          Garage door repair in Elizabeth Lake California
-          Garage door repair in Pearblossom California
-          Garage door repair in Del Sur California</p>
-      </div>
+    <section className="about-wrap">
+      {/* Banner */}
+      <figure className="about-hero">
+        <img
+          src={door}
+          alt="Tahar Garage Door Services — new door installation"
+          className="about-hero__img"
+          loading="eager"
+          decoding="async"
+        />
+      </figure>
 
-      <div className='px-4 pb-4'>
-      <img src={door} className='about-door-img' alt=''></img>
-      </div>
+      <div className="container-pro">
+        {/* Title card */}
+        <div className="about-headcard" role="region" aria-label="About Tahar Garage Door Services">
+          <h1 className="about-headcard__title">About Tahar Garage Door Services</h1>
+          <p className="about-headcard__sub">
+            Family-owned &amp; operated • Serving the Antelope Valley since 2015
+          </p>
+          <div className="about-headcard__cta">
+            <a href={TEL} className="btn btn--primary">Call / Text {PHONE}</a>
+          </div>
+        </div>
 
-    </div>
+        {/* Content grid */}
+        <div className="about-grid">
+          {/* Left column – story + values */}
+          <div className="about-col">
+            <p className="about-intro">
+              We’re a local, family-owned team focused on dependable repairs and quality installs.
+              From a quick sensor alignment to a full door replacement, we use high-quality parts,
+              balance and test every door, and back our work with warranty.
+            </p>
+
+            <p className="about-body">
+              You’ll get a clear estimate up front and options that match your budget and needs.
+              We aim to be fast, friendly, and professional—leaving your garage cleaner and
+              quieter than we found it.
+            </p>
+
+            <div className="about-values">
+              {VALUES.map((v, i) => (
+                <article key={i} className="about-card">
+                  <h3 className="about-card__title">{v.title}</h3>
+                  <p className="about-card__text">{v.text}</p>
+                </article>
+              ))}
+            </div>
+
+            <div className="about-bottom-cta">
+              <p className="about-bottom-cta__text">
+                Not sure what’s wrong with your door? Text us a photo—we’ll help diagnose it fast.
+              </p>
+              <a href={TEL} className="btn">Call / Text {PHONE}</a>
+            </div>
+          </div>
+
+          {/* Right column – service areas + contact */}
+          <aside className="about-aside">
+            <div className="about-aside__card">
+              <div className="about-aside__body">
+                <h4 className="about-aside__title">Proudly serving</h4>
+                <div className="about-areas">
+                  {AREAS.map((city) => (
+                    <span key={city} className="chip">{city}</span>
+                  ))}
+                </div>
+
+                <div className="about-quick">
+                  <h5 className="about-quick__title">Quick contact</h5>
+                  <a href={TEL} className="btn btn--full">{PHONE}</a>
+                  <div className="about-badges">
+                    <span className="chip">Same-day service</span>
+                    <span className="chip">Licensed &amp; insured</span>
+                    <span className="chip">Warranty-backed</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
   );
-};
-
-
-export default About;
+}

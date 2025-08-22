@@ -1,116 +1,141 @@
-import './Services.css';
+import "./Services.css";
+import React from "react";
+import { Link } from "react-router-dom";
 
-import { Link } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import header from "./images/header.jpeg";
+import springs from "./images/springs.jpeg";
+import springs2 from "./images/springs2.jpeg";
+import motor from "./images/motor.jpeg";
+import motor2 from "./images/motor2.jpeg";
+import track from "./images/track.jpeg";
+import track2 from "./images/track2.jpeg";
 
-import springs from './images/springs.jpeg';
-import springs2 from './images/springs2.jpeg';
-import motor from './images/motor.jpeg';
-import motor2 from './images/motor2.jpeg';
-import header from './images/header.jpeg';
-import track from './images/track.jpeg';
-import track2 from './images/track2.jpeg';
+const PHONE = "(661) 202-8255";
+const TEL = "tel:661-202-8255";
 
-const Services = () => {
+const SERVICES = [
+  {
+    to: "/services/springs",
+    title: "Springs",
+    blurb: "Broken or tired torsion/extension springs replaced and balanced.",
+    img: springs2 || springs,
+    alt: "Garage door springs replacement",
+  },
+  {
+    to: "/services/motors",
+    title: "Openers / Motors",
+    blurb: "Install & repair LiftMaster, Chamberlain, Genie and more.",
+    img: motor,
+    alt: "Garage door opener motor",
+  },
+  {
+    to: "/services/tracks",
+    title: "Tracks & Rollers",
+    blurb: "Fix bent tracks, swap rollers, and realign for a smoother, quieter door.",
+    img: track2 || track,
+    alt: "Garage door track repair",
+  },
+  {
+    to: "/services/sensors",
+    title: "Safety Sensors",
+    blurb: "Diagnose misalignment, replace eyes, and stop phantom reversals.",
+    img: motor2,
+    alt: "Garage door safety sensors",
+  },
+  {
+    to: "/services/doors",
+    title: "Garage Doors",
+    blurb: "New doors & sections, panel swaps, weather seal and trims.",
+    img: springs,
+    alt: "New garage doors and panel installs",
+  },
+  {
+    to: "/services/tips",
+    title: "Tips & Tricks",
+    blurb: "Simple maintenance you can do to keep everything running.",
+    img: track,
+    alt: "DIY tips for garage doors",
+  },
+];
+
+export default function Services() {
   return (
-    <div className=''>
+    <section className="services-wrap">
+      {/* Banner image at the very top (no overlay, no dark bars) */}
+      <figure className="services-hero">
+        <img
+          src={header}
+          alt="Tahar Garage Door Services banner"
+          className="services-hero__img"
+          loading="eager"
+          decoding="async"
+        />
+      </figure>
 
-      <img className='w-screen' src={header} alt=''></img>
-      <div className='services-grid-container'>
-        <Link to='/services/tips' className='service-links'>
-          Tips & tricks
-        </Link>
-
-        <Link to='/services/doors' className='service-links'>
-          Garage Doors
-        </Link>
-
-        <Link to='/services/motors' className='service-links'>
-          Motors / Openers
-        </Link>
-
-        <Link to='/services/sensors' className='service-links'>
-          Sensors
-        </Link>
-
-        <Link to='/services/tracks' className='service-links'>
-          Tracks
-        </Link>
-
-        <Link to='/services/springs' className='service-links'>
-          Springs
-        </Link>
-      </div>
-
-
-
-
-
-
-
-
-      {/* <h2 className='text-center text-4xl text-blue-900 underline'>Services</h2>
-
-      <div className='lg:flex justify-around p-2 m-2'>
-        <div className='flex justify-around lg:flex-col xl:flex-row ml-2 xl:my-auto'>
-          <img className='w-40 lg:w-64 rounded-lg m-2 custom-service-img' src={springs} alt=''></img>
-          <img className='w-40 lg:w-64 rounded-lg m-2 custom-service-img' src={springs2} alt=''></img>
+      {/* Title + sub + CTA BELOW the banner */}
+      <div className="container-pro">
+        <div className="services-headcard" role="region" aria-label="Garage Door Services header">
+          <h1 className="services-headcard__title">Garage Door Services</h1>
+          <p className="services-headcard__sub">
+            Same-day availability • Licensed & insured • Family-owned since 2015
+          </p>
+          <div className="services-headcard__cta">
+            <a href={TEL} className="btn btn--primary">Call / Text {PHONE}</a>
+          </div>
         </div>
-        <div className='lg:w-1/2'>
-          <h2 className='text-center text-2xl underline'>Springs</h2>
-          <p className='mt-4'>Most garage doors have two springs installed at the same time, so when one breaks, it’s safe to say the second spring’s life expectancy has just about expired. In order to save you from future inconvenience, unsafe garage door practices, and damaging your garage door opener, Tahar Garage Door Services will usually recommend to replace both springs. If you’ve had the same tires on your car for a while and one blows out while you’re driving, wouldn’t you replace them both? It’s extremely important for your own safety (and time) to properly maintain high value equipment such as garage doors and automobiles, so replacing both springs on your garage door is the best option.</p>
-          <p className='mt-4'>Since garage doors come in all weights and sizes, the right springs need to be installed in order to properly balance the door. If a technician puts the wrong spring on your door, not only will this damage your garage door system, but it will cause the garage door opener to do more work than it was built to do. Your opener is more likely to break quickly if the wrong spring is installed, forcing you to call for another repair. DIY spring replacement also is often an unsafe option because of this. This is why Tahar Garage Door Services only install the right springs for the door’s weight and check their work by performing a balance test.</p>
+
+
+
+        {/* Service cards */}
+        <div className="services-grid">
+          {SERVICES.map((s) => (
+            <Link to={s.to} key={s.to} className="service-card">
+              <div className="service-media">
+                <img
+                  src={s.img}
+                  alt={s.alt}
+                  loading="lazy"
+                  decoding="async"
+                  className="service-img"
+                />
+              </div>
+              <div className="service-body">
+                <h3 className="service-title">{s.title}</h3>
+                <p className="service-blurb">{s.blurb}</p>
+                <span className="service-link">
+                  Learn more
+                  <svg
+                    className="service-link__icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M9 18l6-6-6-6"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+              </div>
+            </Link>
+          ))}
         </div>
-      </div>
 
-      <div className='lg:flex justify-around p-2 m-2'>
-        <div className='flex justify-around lg:flex-col xl:flex-row ml-2 xl:my-auto'>
-          <img className='w-40 lg:w-64 rounded-lg m-2 custom-service-img' src={motor} alt=''></img>
-          <img className='w-40 lg:w-64 rounded-lg m-2 custom-service-img' src={motor2} alt=''></img>
-        </div>
-        <div className='lg:w-1/2'>
-          <h2 className='text-center text-2xl underline'>Opener's / Motors</h2>
-          <p className='mt-4'>How Garage Door Openers Work:
-            Garage door openers consist of several key components that work together to facilitate the smooth operation of the garage door. The primary components include:
-
-            Motor: The motor is the heart of the garage door opener. It is responsible for generating the power needed to lift and lower the door.
-
-            Drive Mechanism: There are three main types of drive mechanisms: chain drive, belt drive, and screw drive. These mechanisms transmit the motor's power to the garage door, moving it up and down along a track.
-
-            Remote Control: Garage door openers are equipped with remote controls that allow users to open and close the door from a distance. These remotes use radio signals to communicate with the opener.
-
-            Safety Sensors: Modern garage door openers are equipped with safety sensors that detect objects or obstructions in the door's path. If an obstruction is detected, the door reverses its direction to prevent accidents.</p>
-          <p className='mt-4'>Common Problems with Garage Door Openers:
-            Despite their reliability, garage door openers can encounter several common issues over time. It's important to be aware of these problems to ensure your garage door operates safely and efficiently. Some common issues include:
-
-            Loud or Noisy Operation: A noisy garage door opener may be caused by worn-out or damaged components, such as rollers, hinges, or the drive mechanism.
-
-            Remote Control Problems: Issues with the remote control can stem from dead batteries, signal interference, or a malfunctioning remote. Replacing batteries and reprogramming the remote can often resolve these problems.
-
-            Safety Sensor Malfunctions: If the safety sensors are misaligned or dirty, they may prevent the garage door from closing properly. Regularly clean and check the alignment of these sensors to ensure they function correctly.
-
-            Opener Not Responding: Sometimes, the garage door opener may not respond to remote commands. This could be due to electrical issues, such as a blown fuse or a tripped circuit breaker. In such cases, a professional electrician may be required to diagnose and repair the problem.
-
-            Door Reversal Issues: If the garage door reverses without apparent cause, it may indicate a problem with the safety sensors, the door's balance, or the opener's force settings. Adjustments may be needed to correct these issues.</p>
+        {/* Bottom CTA */}
+        <div className="services-cta">
+          <div className="services-cta__inner">
+            <p className="services-cta__text">
+              Don’t see your issue? We fix cables, remotes, keypads, seals and more.
+            </p>
+            <a href={TEL} className="btn">Call / Text {PHONE}</a>
+          </div>
         </div>
       </div>
-
-      <div className='lg:flex justify-around p-2 m-2'>
-        <div className='flex justify-around lg:flex-col xl:flex-row ml-2 xl:my-auto'>
-          <img className='w-40 lg:w-64 rounded-lg m-2 custom-service-img' src={track} alt=''></img>
-          <img className='w-40 lg:w-64 rounded-lg m-2 custom-service-img' src={track2} alt=''></img>
-        </div>
-        <div className='lg:w-1/2'>
-          <h2 className='text-center text-2xl underline'>Doors off Track</h2>
-          <p className='mt-4'>If your garage door is off track, it's important to refrain from operating it further. Attempting to use the door in this condition can cause more damage. It's advisable to contact a professional garage door technician to assess and repair the issue</p>
-          <p className='mt-4'>A door that has fallen off It's track may not seem like a big problem and you may think attmpting a DIY might be a good idea however because of many factors including the weight of the door and the tension on the springs and cables can offten times cause further damage to the door or worse, injury to yourself. </p>
-        </div>
-      </div> */}
-
-    </div>
+    </section>
   );
-};
-
-
-
-export default Services;
+}

@@ -1,13 +1,51 @@
-import React, { Component } from 'react';
+import React from "react";
 
-class AntelopeValleyMap extends Component {
+class AntelopeValleyMap extends React.Component {
   constructor(props) {
     super(props);
     this.mapRef = React.createRef();
+    this.map = null;
+    this.polygon = null;
   }
 
   componentDidMount() {
-    const antelopeValleyCoords = [
+    // Wait for Google Maps API
+    if (window.google && window.google.maps) {
+      this.initMap();
+    } else {
+      // If the script loads later, try again shortly
+      this.retry = setInterval(() => {
+        if (window.google && window.google.maps) {
+          clearInterval(this.retry);
+          this.initMap();
+        }
+      }, 200);
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.retry) clearInterval(this.retry);
+    if (this.polygon) this.polygon.setMap(null);
+    this.polygon = null;
+    this.map = null;
+  }
+
+  initMap() {
+    const gmaps = window.google.maps;
+
+    // Center roughly on Lancaster/Palmdale
+    const center = { lat: 34.76, lng: -118.14 };
+
+    this.map = new gmaps.Map(this.mapRef.current, {
+      center,
+      zoom: 9,
+      mapTypeControl: true,
+      streetViewControl: false,
+      fullscreenControl: true,
+    });
+
+    // Example polygon path (replace with your exact service-area path if you have one)
+    const polygonPath = [
       { lat: 35.06982, lng: -118.24183 }, // Mojave-left
       { lat: 34.90070, lng: -118.23801 }, // willow springs-right
       { lat: 34.87145, lng: -118.44278 }, // willow springs-left
@@ -23,28 +61,28 @@ class AntelopeValleyMap extends Component {
       { lat: 35.14396, lng: -118.19615 } // left of california city
     ];
 
-    const mapOptions = {
-      center: { lat: 34.7419, lng: -118.1644 }, // Center of Antelope Valley
-      zoom: 9,
-    };
-
-    const map = new window.google.maps.Map(this.mapRef.current, mapOptions);
-
-    // Create a Polygon to outline Antelope Valley
-    const antelopeValleyPolygon = new window.google.maps.Polygon({
-      paths: antelopeValleyCoords,
-      strokeColor: '#FF0000', // Outline color (red)
-      strokeOpacity: 0.8,
-      strokeWeight: 1,
-      fillColor: '#FF0000', // Fill color (red)
-      fillOpacity: 0.10,
+    this.polygon = new gmaps.Polygon({
+      paths: polygonPath,
+      strokeColor: "#2563eb",      // blue-600
+      strokeOpacity: 0.9,
+      strokeWeight: 2,
+      fillColor: "#3b82f6",        // blue-500
+      fillOpacity: 0.08,
     });
+    this.polygon.setMap(this.map);
 
-    antelopeValleyPolygon.setMap(map);
+    // Ensure map renders correctly after layout
+    window.setTimeout(() => gmaps.event.trigger(this.map, "resize"), 0);
   }
 
   render() {
-    return <div className='lg:h-96' ref={this.mapRef} style={{ opacity: '.9', borderRadius: '20px', width: '100%', height: '390px', marginBottom: '5px', marginTop: '5px', boxShadow: 'black 3px 3px 5px 2px' }}></div>;
+    return (
+      <div
+        ref={this.mapRef}
+        className="w-full h-64 sm:h-72 md:h-80 lg:h-96 rounded-2xl border border-blue-100"
+        style={{ width: "100%" }}
+      />
+    );
   }
 }
 
